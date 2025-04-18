@@ -2,6 +2,7 @@ import os
 import sys
 import torch
 import warnings
+import argparse
 import torch.nn as nn
 
 sys.path.append("./src/")
@@ -75,12 +76,48 @@ class PatchEmbedding(nn.Module):
 
 
 if __name__ == "__main__":
-    patch_embedding = PatchEmbedding(
-        image_size=224,
-        patch_size=16,
-        embedding_dimension=512,
+    parser = argparse.ArgumentParser(
+        description="Patch Embedding for the Medical Assistant Task".capitalize()
+    )
+    parser.add_argument(
+        "--image_channels",
+        type=int,
+        default=3,
+        help="The number of channels in the input image".capitalize(),
+    )
+    parser.add_argument(
+        "--image_size",
+        type=int,
+        default=224,
+        help="The size of the input image".capitalize(),
+    )
+    parser.add_argument(
+        "--patch_size", type=int, default=16, help="The size of the patch".capitalize()
+    )
+    parser.add_argument(
+        "--embedding_dimension",
+        type=int,
+        default=512,
+        help="The dimension of the embedding".capitalize(),
     )
 
-    image = torch.randn((1, 3, 224, 224))
+    args = parser.parse_args()
 
-    print(patch_embedding(image).size())
+    image_channels = args.image_channels
+    image_size = args.image_size
+    patch_size = args.patch_size
+    embedding_dimension = args.embedding_dimension
+
+    patch_embedding = PatchEmbedding(
+        image_size=image_size,
+        patch_size=patch_size,
+        embedding_dimension=embedding_dimension,
+    )
+
+    image = torch.randn((1, image_channels, image_size, image_size))
+
+    assert (patch_embedding(image).size()) == (
+        1,
+        (image_size // patch_size) ** 2,
+        embedding_dimension,
+    ), "Patch embedding is not working correctly".capitalize()
