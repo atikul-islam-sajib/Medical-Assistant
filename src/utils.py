@@ -8,6 +8,11 @@ import torch.nn as nn
 sys.path.append("./src/")
 
 
+def config_files():
+    with open("./train_config.yml", mode="r") as file:
+        return yaml.safe_load(file)
+
+
 def dump_files(value=None, filename=None):
     if (value is None) and (filename is None):
         raise ValueError("Either values or filename must be provided".capitalize())
