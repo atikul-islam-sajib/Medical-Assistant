@@ -1,14 +1,15 @@
 import os
+import cv2
 import sys
 import torch
 import zipfile
-import cv2
+import argparse
 import torch.nn as nn
 from PIL import Image
-from sklearn.model_selection import train_test_split
-from torchvision import transforms
 from tqdm import tqdm
+from torchvision import transforms
 from torch.utils.data import DataLoader
+from sklearn.model_selection import train_test_split
 
 sys.path.append("./src/")
 
@@ -160,12 +161,45 @@ class Loader:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Dataloader for the Medical Assistant Task".title()
+    )
+    parser.add_argument(
+        "--image_path",
+        type=str,
+        default="./data/raw/dataset.zip",
+        help="Path to the dataset".capitalize(),
+    )
+    parser.add_argument(
+        "--image_channels",
+        type=int,
+        default=1,
+        help="Number of image channels".capitalize(),
+    )
+    parser.add_argument(
+        "--image_size", type=int, default=224, help="Image size".capitalize()
+    )
+    parser.add_argument(
+        "--batch_size", type=int, default=16, help="Batch size".capitalize()
+    )
+    parser.add_argument(
+        "--split_size", type=float, default=0.30, help="Split size".capitalize()
+    )
+
+    args = parser.parse_args()
+
+    image_path = args.image_path
+    image_channels = args.image_channels
+    image_size = args.image_size
+    batch_size = args.batch_size
+    split_size = args.split_size
+
     loader = Loader(
-        image_path="./data/raw/dataset.zip",
-        image_channels=1,
-        image_size=224,
-        batch_size=16,
-        split_size=0.30,
+        image_path=image_path,
+        image_channels=image_channels,
+        image_size=image_size,
+        batch_size=batch_size,
+        split_size=split_size,
     )
 
     loader.unzip_folder()
