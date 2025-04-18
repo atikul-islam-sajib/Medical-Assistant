@@ -6,18 +6,30 @@ import torch.nn as nn
 
 sys.path.append("./src/")
 
+
 class PositionalEncoding(nn.Module):
     def __init__(self, dimension: int = 512):
         super(PositionalEncoding, self).__init__()
         self.dimension = dimension
-        
-    def forward(self, x: torch.Tensor.Tensor):
+
+        self.encoding = nn.Parameter(
+            torch.randn(
+                size=(
+                    self.dimension // self.dimension,
+                    self.dimension // self.dimension,
+                    self.dimension,
+                ),
+                requires_grad=True,
+            )
+        )
+
+    def forward(self, x: torch.Tensor):
         if not isinstance(x, torch.Tensor):
             raise TypeError("Input must be a torch.Tensor")
         else:
-            pass
-        
-        
+            return x + self.encoding
+
+
 class PatchEmbedding(nn.Module):
     def __init__(
         self,
@@ -41,15 +53,16 @@ class PatchEmbedding(nn.Module):
             self.embedding_dimension = (
                 self.image_channels**self.patch_size * self.patch_size
             )
-            
+
         self.projection = nn.Conv2d(
             in_channels=self.image_channels,
             out_channels=self.embedding_dimension,
             kernel_size=self.patch_size,
             stride=self.patch_size,
-            padding=self.patch_size // self.patch_size, 
+            padding=self.patch_size // self.patch_size,
             bias=False,
         )
+        self.encoding = PositionalEncoding(dimension=self.embedding_dimension)
 
     def forward(self, x: torch.Tensor):
         if not isinstance(x, torch.Tensor):
@@ -57,6 +70,7 @@ class PatchEmbedding(nn.Module):
         else:
             x = self.projection(x)
             x = x.view(x.size(0), x.size(-1) * x.size(-2), x.size(1))
+            x = self.encoding(x)
             return x
 
 
@@ -66,7 +80,7 @@ if __name__ == "__main__":
         patch_size=16,
         embedding_dimension=512,
     )
-    
+
     image = torch.randn((1, 3, 224, 224))
-    
+
     print(patch_embedding(image).size())
