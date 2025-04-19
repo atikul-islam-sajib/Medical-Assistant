@@ -41,12 +41,12 @@ class Classifier(nn.Module):
             self.layers += [
                 nn.Linear(in_features=self.in_features, out_features=self.out_features)
             ]
-            
+
             if index == 0:
                 self.layers += [nn.BatchNorm1d(num_features=self.out_features)]
                 self.layers += [self.activation]
                 self.layers += [nn.Dropout(p=self.dropout)]
-                
+
             self.in_features = self.out_features
             self.out_features = self.out_features // 4
 
@@ -67,18 +67,39 @@ class Classifier(nn.Module):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Classifier for the Medical Assistant".title()
+    )
+    parser.add_argument(
+        "--dimension", type=int, default=768, help="Dimension of the input"
+    )
+    parser.add_argument("--dropout", type=float, default=0.3, help="Dropout rate")
+    parser.add_argument(
+        "--activation", type=str, default="leaky", help="Activation function"
+    )
+    parser.add_argument("--batch_size", type=int, default=16, help="Batch size")
+    parser.add_argument("--target_size", type=int, default=4, help="Target size")
+    parser.add_argument("--channels", type=int, default=1, help="Number of channels")
+    parser.add_argument("--image_size", type=int, default=224, help="Image size")
+    parser.add_argument("--patch_size", type=int, default=16, help="Patch size")
+
+    args = parser.parse_args()
+
+    num_of_patches = (args.image_size // args.patch_size) ** 2
+
     classifier = Classifier(
-        dimension=256,
-        dropout=0.3,
-        activation="leaky",
+        dimension=args.dimension,
+        dropout=args.dropout,
+        activation=args.activation,
     )
 
-    images = torch.randn((16, 196, 256))
+    images = torch.randn((16, num_of_patches, args.dimension))
     images = torch.mean(images, dim=1)
     assert (classifier(images).size()) == (
-        16,
-        4,
+        args.batch_size,
+        args.target_size,
     ), "Classifier is not working properly".capitalize()
+
 
 class ViTWithClassifier(nn.Module):
     def __init__(
@@ -86,6 +107,7 @@ class ViTWithClassifier(nn.Module):
         image_channels: int = 3,
         image_size: int = 224,
         patch_size: int = 16,
+        target_size: int = 4,
         encoder_layer: int = 4,
         nhead: int = 8,
         d_model: int = 768,
@@ -99,6 +121,7 @@ class ViTWithClassifier(nn.Module):
         self.image_channels = image_channels
         self.image_size = image_size
         self.patch_size = patch_size
+        self.target_size = target_size
         self.encoder_layer = encoder_layer
         self.nhead = nhead
         self.d_model = d_model
@@ -133,7 +156,7 @@ class ViTWithClassifier(nn.Module):
                 )
             ]
         )
-        
+
         self.classifier = Classifier(
             dimension=self.d_model,
             dropout=self.dropout,
@@ -149,9 +172,9 @@ class ViTWithClassifier(nn.Module):
             for layer in self.transformer:
                 x = layer(x)
 
-            x = torch.mean(x, dim = 1)
+            x = torch.mean(x, dim=1)
             x = self.classifier(x)
-            
+
             return x
 
 
@@ -191,11 +214,14 @@ if __name__ == "__main__":
         help="Layer normalization epsilon",
     )
     parser.add_argument("--bias", type=bool, default=False, help="Bias")
+    parser.add_argument("--target_size", type=int, default=4, help="Target size")
+    parser.add_argument("--batch_size", type=int, default=16, help="Batch size")
     args = parser.parse_args()
 
     image_channels = args.image_channels
     image_size = args.image_size
     patch_size = args.patch_size
+    target_size = args.target_size
     encoder_layer = args.encoder_layer
     nhead = args.nhead
     d_model = args.d_model
@@ -209,6 +235,7 @@ if __name__ == "__main__":
         image_channels=image_channels,
         image_size=image_size,
         patch_size=patch_size,
+        target_size=target_size,
         encoder_layer=encoder_layer,
         nhead=nhead,
         d_model=d_model,
@@ -219,15 +246,11 @@ if __name__ == "__main__":
         bias=bias,
     )
 
-    images = torch.randn(
-        (image_channels * 16 , image_channels, image_size, image_size)
-    )
+    images = torch.randn((args.batch_size, image_channels, image_size, image_size))
 
     num_of_patches = (image_size // patch_size) ** 2
 
-    # assert (vit(images).size()) == (
-    #     image_channels // image_channels,
-    #     num_of_patches,
-    #     d_model,
-    # ), "ViT is not working properly".capitalize()
-    print(vit(images).size())
+    assert (vit(images).size()) == (
+        args.batch_size,
+        target_size,
+    ), "ViTWithClassifier is not working correctly".capitalize()
