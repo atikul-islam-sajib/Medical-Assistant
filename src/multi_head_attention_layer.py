@@ -1,10 +1,26 @@
 import os
 import sys
+import math
 import torch
 import warnings
 import torch.nn as nn
 
 sys.path.append("./src/")
+
+
+def scaled_dot_product(query: torch.Tensor, key: torch.Tensor, value: torch.Tensor):
+    if (
+        not isinstance(query, torch.Tensor)
+        and isinstance(key, torch.Tensor)
+        and isinstance(value, torch.Tensor)
+    ):
+        raise TypeError("All inputs must be torch.Tensor".capitalize())
+
+    key = key.transpose(-2, -1)
+    scores = torch.matmul(query, key) / math.sqrt(key.size(-1))
+    scores = torch.softmax(scores, dim=-1)
+    attention = torch.matmul(scores, value)
+    return attention
 
 
 class MultiHeadAttentionLayer(nn.Module):
@@ -49,7 +65,26 @@ class MultiHeadAttentionLayer(nn.Module):
             key = key.permute(0, 2, 1, 3)
             value = value.permute(0, 2, 1, 3)
 
+            attention = scaled_dot_product(query=query, key=key, value=value)
+            attention = attention.view(
+                attention.size(0),
+                attention.size(-2),
+                attention.size(1),
+                attention.size(-1),
+            )
+            attention = attention.view(
+                attention.size(0),
+                attention.size(1),
+                attention.size(2) * attention.size(3),
+            )
+
+            assert (
+                attention.size() == x.size()
+            ), "Attention output must have the same size as input".capitalize()
+
+            return attention
+
 
 if __name__ == "__main__":
     multihead_attention = MultiHeadAttentionLayer(nheads=8, dimension=256)
-    multihead_attention(x=torch.randn((1, 196, 256)))
+    print(multihead_attention(x=torch.randn((1, 196, 256))).size())
