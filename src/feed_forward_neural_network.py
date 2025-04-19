@@ -62,9 +62,27 @@ class FeedForwardNeuralNetwork(nn.Module):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Feed Forward Neural Network for the Medical Assistant".title())
+    parser.add_argument("--d_model", type=int, default=768, help="The dimension of the input features")
+    parser.add_argument("--dim_feedforward", type=int, default=2048, help="The dimension of the output features")
+    parser.add_argument("--dropout", type=float, default=0.1, help="The dropout rate")
+    
+    args = parser.parse_args()
+    
+    image_size = 224
+    patch_size = 16
+    image_channels = 1
+    dropout = 0.1
+    
+    total_patches = (image_size // patch_size) ** 2
+    dimension = (image_channels * patch_size ** 2)
+    dim_feedforward = 4 * dimension
+    
+    images = torch.randn(image_channels // image_channels, total_patches, dimension)
+    
     network = FeedForwardNeuralNetwork(
-        d_model=256,
-        dim_feedforward=4 * 256,
-        dropout=0.1,
+        d_model=dimension,
+        dim_feedforward=dim_feedforward,
+        dropout=dropout,
     )
-    print(network)
+    assert (network(images).size()) == images.size(), "FFNN is not working properly".capitalize()
