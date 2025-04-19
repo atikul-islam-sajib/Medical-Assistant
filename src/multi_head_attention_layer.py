@@ -2,6 +2,7 @@ import os
 import sys
 import math
 import torch
+import argparse
 import warnings
 import torch.nn as nn
 
@@ -86,5 +87,28 @@ class MultiHeadAttentionLayer(nn.Module):
 
 
 if __name__ == "__main__":
-    multihead_attention = MultiHeadAttentionLayer(nheads=8, dimension=256)
-    print(multihead_attention(x=torch.randn((1, 196, 256))).size())
+    parser = argparse.ArgumentParser(
+        description="Multi Head Attention Layer for the Medical Assistant".title()
+    )
+    parser.add_argument(
+        "--nheads",
+        type=int,
+        default=6,
+        help="Number of heads for the multi head attention layer",
+    )
+    parser.add_argument(
+        "--dimension", type=int, default=768, help="Dimension of the input tensor"
+    )
+    args = parser.parse_args()
+
+    nheads = args.nheads
+    dimension = args.dimension
+
+    images = torch.randn((dimension // dimension, 196, dimension))
+
+    multihead_attention = MultiHeadAttentionLayer(nheads=nheads, dimension=dimension)
+    assert (
+        multihead_attention(x=images)
+    ).size() == images.size(), (
+        "Multi head attention output must have the same size as input".capitalize()
+    )
