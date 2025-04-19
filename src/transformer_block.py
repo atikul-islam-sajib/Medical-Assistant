@@ -56,31 +56,86 @@ class TransformerEncoderBlock(nn.Module):
             raise TypeError("Input must be a torch.Tensor")
         else:
             residual = x
-            
+
             x = self.multi_head_attention(x)
             x = self.dropout1(x)
             x = torch.add(x, residual)
             x = self.layer_norm1(x)
-            
+
             residual = x
-            
+
             x = self.feed_forward_network(x)
             x = torch.add(x, residual)
             x = self.layer_norm2(x)
 
             return x
 
+
 if __name__ == "__main__":
-    transformer = TransformerEncoderBlock(
-        nhead=8,
-        d_model=256,
-        dim_feedforward=2048,
-        dropout=0.1,
-        activation="gelu",
-        layer_norm_eps=1e-05,
-        bias=False,
+    parser = argparse.ArgumentParser(
+        description="Transformer Encoder Block for the Medical Assistant".title()
     )
+    parser.add_argument(
+        "--nhead",
+        type=int,
+        default=8,
+        help="Number of heads in the multi-head attention layer",
+    )
+    parser.add_argument(
+        "--d_model",
+        type=int,
+        default=768,
+        help="Dimension of the input and output tensors",
+    )
+    parser.add_argument(
+        "--dim_feedforward",
+        type=int,
+        default=2048,
+        help="Dimension of the feedforward network",
+    )
+    parser.add_argument("--dropout", type=float, default=0.1, help="Dropout rate")
+    parser.add_argument(
+        "--activation", type=str, default="gelu", help="Activation function"
+    )
+    parser.add_argument(
+        "--layer_norm_eps",
+        type=float,
+        default=1e-05,
+        help="Epsilon value for layer normalization",
+    )
+    parser.add_argument(
+        "--bias", type=bool, default=False, help="Bias value for the linear layers"
+    )
+
+    args = parser.parse_args()
+
+    nhead = args.nhead
+    d_model = args.d_model
+    dim_feedforward = args.dim_feedforward
+    dropout = args.dropout
+    activation = args.activation
+    layer_norm_eps = args.layer_norm_eps
+    bias = args.bias
     
-    images = torch.randn((1, 196, 256))
-    
-    print(transformer(images).size())
+    image_size = 224
+    patch_size = 16
+    image_channels = 3
+
+    transformer = TransformerEncoderBlock(
+        nhead=nhead,
+        d_model=d_model,
+        dim_feedforward=dim_feedforward,
+        dropout=dropout,
+        activation=activation,
+        layer_norm_eps=layer_norm_eps,
+        bias=bias,
+    )
+
+    num_of_patches = (image_size // patch_size) ** 2
+    patch_dim = patch_size**2 * image_channels
+
+    images = torch.randn((1, num_of_patches, patch_dim))
+
+    assert (
+        transformer(images).size()
+    ) == images.size(), "Transformer Encoder Block is not working properly".capitalize()
