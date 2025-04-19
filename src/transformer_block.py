@@ -32,7 +32,7 @@ class TransformerEncoderBlock(nn.Module):
         self.bias = bias
 
         self.multi_head_attention = MultiHeadAttentionLayer(
-            nhead=self.nheads,
+            nheads=self.nheads,
             dimension=self.d_model,
         )
 
@@ -73,9 +73,14 @@ class TransformerEncoderBlock(nn.Module):
 if __name__ == "__main__":
     transformer = TransformerEncoderBlock(
         nhead=8,
+        d_model=256,
         dim_feedforward=2048,
         dropout=0.1,
         activation="gelu",
         layer_norm_eps=1e-05,
         bias=False,
     )
+    
+    images = torch.randn((1, 196, 256))
+    
+    print(transformer(images).size())
