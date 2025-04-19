@@ -24,6 +24,26 @@ def scaled_dot_product(query: torch.Tensor, key: torch.Tensor, value: torch.Tens
     return attention
 
 
+if __name__ == "__main__":
+    image_channels = 1
+    image_size = 224
+    patch_size = 16
+    total_patches = (image_size // patch_size) ** 2
+    embedding_dimension = image_channels * patch_size * patch_size
+
+    attention = scaled_dot_product(
+        query=torch.randn(1, total_patches, embedding_dimension),
+        key=torch.randn(1, total_patches, embedding_dimension),
+        value=torch.randn(1, total_patches, embedding_dimension),
+    )
+
+    assert attention.size() == (
+        total_patches // total_patches,
+        total_patches,
+        embedding_dimension,
+    ), "Attention output size must match the input size".capitalize()
+
+
 class MultiHeadAttentionLayer(nn.Module):
     def __init__(self, nheads: int = 6, dimension: int = 768):
         super(MultiHeadAttentionLayer, self).__init__()
