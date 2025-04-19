@@ -1,6 +1,7 @@
 import os
 import sys
 import torch
+import argparse
 import torch.nn as nn
 
 sys.path.append("./src/")
@@ -49,6 +50,12 @@ class LayerNormalization(nn.Module):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Layer Normalization for the Medical Assistant".title())
+    parser.add_argument("--normalized_shape", type=int, default=768, help="The shape of the input tensor".capitalize())
+    parser.add_argument("--eps", type=float, default=1e-05, help="The epsilon value for the normalization".capitalize())
+    
+    args = parser.parse_args()
+    
     image_channels = 3
     image_size = 224
     patch_size = 16
