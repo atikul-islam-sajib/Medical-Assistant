@@ -1,6 +1,7 @@
 import os
 import sys
 import torch
+import argparse
 from tqdm import tqdm
 import torch.nn as nn
 
@@ -47,16 +48,6 @@ class ViT(nn.Module):
             embedding_dimension=self.d_model,
         )
 
-        # self.transformer = TransformerEncoderBlock(
-        #     nhead=self.nhead,
-        #     d_model=self.d_model,
-        #     dim_feedforward=self.dim_feedforward,
-        #     dropout=self.dropout,
-        #     activation=self.activation,
-        #     layer_norm_eps=self.layer_norm_eps,
-        #     bias=self.bias,
-        # )
-
         self.transformer = nn.Sequential(
             *[
                 TransformerEncoderBlock(
@@ -87,20 +78,69 @@ class ViT(nn.Module):
 
 
 if __name__ == "__main__":
-    vit = ViT(
-        image_channels=1,
-        image_size=224,
-        patch_size=16,
-        encoder_layer=4,
-        nhead=8,
-        d_model=256,
-        dim_feedforward=4 * 256,
-        dropout=0.1,
-        activation="gelu",
-        layer_norm_eps=1e-05,
-        bias=False,
+    parser = argparse.ArgumentParser(description="ViT Model for the Medical Assistant")
+    parser.add_argument(
+        "--image_channels", type=int, default=3, help="Number of image channels"
     )
-    
-    images = torch.randn((1, 1, 224, 224))
-    
-    print(vit(images).size())
+    parser.add_argument("--image_size", type=int, default=224, help="Image size")
+    parser.add_argument("--patch_size", type=int, default=16, help="Patch size")
+    parser.add_argument(
+        "--encoder_layer", type=int, default=4, help="Number of encoder layers"
+    )
+    parser.add_argument(
+        "--nhead",
+        type=int,
+        default=8,
+        help="Number of heads in the multi-head attention",
+    )
+    parser.add_argument(
+        "--d_model", type=int, default=768, help="Dimension of the model"
+    )
+    parser.add_argument(
+        "--dim_feedforward",
+        type=int,
+        default=2048,
+        help="Dimension of the feedforward network",
+    )
+    parser.add_argument("--dropout", type=float, default=0.1, help="Dropout rate")
+    parser.add_argument(
+        "--activation", type=str, default="gelu", help="Activation function"
+    )
+    parser.add_argument(
+        "--layer_norm_eps",
+        type=float,
+        default=1e-05,
+        help="Layer normalization epsilon",
+    )
+    parser.add_argument("--bias", type=bool, default=False, help="Bias")
+    args = parser.parse_args()
+
+    image_channels = args.image_channels
+    image_size = args.image_size
+    patch_size = args.patch_size
+    encoder_layer = args.encoder_layer
+    nhead = args.nhead
+    d_model = args.d_model
+    dim_feedforward = args.dim_feedforward
+    dropout = args.dropout
+    activation = args.activation
+    layer_norm_eps = args.layer_norm_eps
+    bias = args.bias
+
+    vit = ViT(
+        image_channels=image_channels,
+        image_size=image_size,
+        patch_size=patch_size,
+        encoder_layer=encoder_layer,
+        nhead=nhead,
+        d_model=d_model,
+        dim_feedforward=4 * d_model,
+        dropout=dropout,
+        activation=activation,
+        layer_norm_eps=layer_norm_eps,
+        bias=bias,
+    )
+
+    images = torch.randn((image_channels//image_channels, image_channels, image_size, image_size))
+
+    assert (vit(images).size()) == images.size(), "ViT is not working properly".capitalize()

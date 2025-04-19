@@ -52,7 +52,7 @@ class PatchEmbedding(nn.Module):
                 "Embedding dimension not specified. Using the default value calculated as: image_channels × patch_size × patch_size."
             )
             self.embedding_dimension = (
-                self.image_channels**self.patch_size * self.patch_size
+                self.image_channels * self.patch_size * self.patch_size
             )
 
         self.projection = nn.Conv2d(
