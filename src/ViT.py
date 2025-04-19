@@ -141,6 +141,14 @@ if __name__ == "__main__":
         bias=bias,
     )
 
-    images = torch.randn((image_channels//image_channels, image_channels, image_size, image_size))
+    images = torch.randn(
+        (image_channels // image_channels, image_channels, image_size, image_size)
+    )
 
-    assert (vit(images).size()) == images.size(), "ViT is not working properly".capitalize()
+    num_of_patches = (image_size // patch_size) ** 2
+
+    assert (vit(images).size()) == (
+        image_channels // image_channels,
+        num_of_patches,
+        d_model,
+    ), "ViT is not working properly".capitalize()
