@@ -11,7 +11,76 @@ from patch_embedding import PatchEmbedding
 from transformer_block import TransformerEncoderBlock
 
 
-class ViT(nn.Module):
+class Classifier(nn.Module):
+    def __init__(
+        self, dimension: int = 768, dropout: float = 0.3, activation: str = "leaky"
+    ):
+        super(Classifier, self).__init__()
+
+        self.dimension = dimension
+        self.dropout = dropout
+        self.activation_func = activation
+
+        if self.activation_func == "relu":
+            self.activation = nn.ReLU(inplace=True)
+        elif self.activation_func == "leaky":
+            self.activation = nn.LeakyReLU(inplace=True)
+        elif self.activation_func == "gelu":
+            self.activation = nn.GELU()
+        elif self.activation_func == "tanh":
+            self.activation = nn.Tanh()
+        else:
+            raise ValueError("Invalid activation function")
+
+        self.in_features = self.dimension
+        self.out_features = self.in_features // 4
+
+        self.layers = []
+
+        for index in range(2):
+            self.layers += [
+                nn.Linear(in_features=self.in_features, out_features=self.out_features)
+            ]
+            
+            if index == 0:
+                self.layers += [nn.BatchNorm1d(num_features=self.out_features)]
+                self.layers += [self.activation]
+                self.layers += [nn.Dropout(p=self.dropout)]
+                
+            self.in_features = self.out_features
+            self.out_features = self.out_features // 4
+
+        self.layers += [
+            nn.Sequential(
+                nn.Linear(in_features=self.in_features, out_features=4),
+                nn.Softmax(dim=1),
+            )
+        ]
+
+        self.classifier = nn.Sequential(*self.layers)
+
+    def forward(self, x: torch.Tensor):
+        if not isinstance(x, torch.Tensor):
+            raise TypeError("Input must be a torch.Tensor")
+        else:
+            return self.classifier(x)
+
+
+if __name__ == "__main__":
+    classifier = Classifier(
+        dimension=256,
+        dropout=0.3,
+        activation="leaky",
+    )
+
+    images = torch.randn((16, 196, 256))
+    images = torch.mean(images, dim=1)
+    assert (classifier(images).size()) == (
+        16,
+        4,
+    ), "Classifier is not working properly".capitalize()
+
+class ViTWithClassifier(nn.Module):
     def __init__(
         self,
         image_channels: int = 3,
@@ -26,7 +95,7 @@ class ViT(nn.Module):
         layer_norm_eps: float = 1e-05,
         bias: bool = False,
     ):
-        super(ViT, self).__init__()
+        super(ViTWithClassifier, self).__init__()
         self.image_channels = image_channels
         self.image_size = image_size
         self.patch_size = patch_size
@@ -64,6 +133,12 @@ class ViT(nn.Module):
                 )
             ]
         )
+        
+        self.classifier = Classifier(
+            dimension=self.d_model,
+            dropout=self.dropout,
+            activation=self.activation,
+        )
 
     def forward(self, x: torch.Tensor):
         if not isinstance(x, torch.Tensor):
@@ -74,6 +149,9 @@ class ViT(nn.Module):
             for layer in self.transformer:
                 x = layer(x)
 
+            x = torch.mean(x, dim = 1)
+            x = self.classifier(x)
+            
             return x
 
 
@@ -127,7 +205,7 @@ if __name__ == "__main__":
     layer_norm_eps = args.layer_norm_eps
     bias = args.bias
 
-    vit = ViT(
+    vit = ViTWithClassifier(
         image_channels=image_channels,
         image_size=image_size,
         patch_size=patch_size,
@@ -142,13 +220,14 @@ if __name__ == "__main__":
     )
 
     images = torch.randn(
-        (image_channels // image_channels, image_channels, image_size, image_size)
+        (image_channels * 16 , image_channels, image_size, image_size)
     )
 
     num_of_patches = (image_size // patch_size) ** 2
 
-    assert (vit(images).size()) == (
-        image_channels // image_channels,
-        num_of_patches,
-        d_model,
-    ), "ViT is not working properly".capitalize()
+    # assert (vit(images).size()) == (
+    #     image_channels // image_channels,
+    #     num_of_patches,
+    #     d_model,
+    # ), "ViT is not working properly".capitalize()
+    print(vit(images).size())
