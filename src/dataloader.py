@@ -118,12 +118,12 @@ class Loader:
         train_dataset = self.split_dataset(X=self.train_images, y=self.train_labels)
 
         return {
-            "X_train": torch.stack(train_dataset["X_train"][:400]).float(),
-            "X_test": torch.stack(train_dataset["X_test"][:400]).float(),
-            "y_train": torch.tensor(train_dataset["y_train"][:100], dtype=torch.long),
-            "y_test": torch.tensor(train_dataset["y_test"][:100], dtype=torch.long),
-            "valid_images": torch.stack(self.valid_images[:50]).float(),
-            "valid_labels": torch.tensor(self.valid_labels[:50], dtype=torch.long),
+            "X_train": torch.stack(train_dataset["X_train"][:200]).float(),
+            "X_test": torch.stack(train_dataset["X_test"][:200]).float(),
+            "y_train": torch.tensor(train_dataset["y_train"][:50], dtype=torch.long),
+            "y_test": torch.tensor(train_dataset["y_test"][:50], dtype=torch.long),
+            "valid_images": torch.stack(self.valid_images[:20]).float(),
+            "valid_labels": torch.tensor(self.valid_labels[:20], dtype=torch.long),
         }
 
     def create_dataloader(self):
