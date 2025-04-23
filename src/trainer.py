@@ -2,6 +2,7 @@ import os
 import sys
 import torch
 import warnings
+import argparse
 import numpy as np
 import torch.nn as nn
 from tqdm import tqdm
@@ -218,18 +219,34 @@ class Trainer:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Training for the Medical Assistant")
+    parser.add_argument("--epochs", type=int, default=100, help="Number of epochs")
+    parser.add_argument("--lr", type=float, default=0.001, help="Learning rate")
+    parser.add_argument("--beta1", type=float, default=0.9, help="Beta1 for Adam")
+    parser.add_argument("--beta2", type=float, default=0.999, help="Beta2 for Adam")
+    parser.add_argument(
+        "--weight_decay", type=float, default=0.0001, help="Weight decay"
+    )
+    parser.add_argument("--momentum", type=float, default=0.85, help="Momentum for SGD")
+    parser.add_argument("--adam", type=bool, default=True, help="Use Adam optimizer")
+    parser.add_argument("--SGD", type=bool, default=False, help="Use SGD optimizer")
+    parser.add_argument("--device", type=str, default="mps", help="Device to use")
+    parser.add_argument("--verbose", type=bool, default=True, help="Verbose mode")
+
+    args = parser.parse_args()
+
     trainer = Trainer(
         model=None,
-        epochs=100,
-        lr=0.001,
-        beta1=0.9,
-        beta2=0.999,
-        weight_decay=0.0001,
-        momentum=0.85,
-        adam=True,
-        SGD=False,
-        device="mps",
-        verbose=True,
+        epochs=args.epochs,
+        lr=args.lr,
+        beta1=args.beta1,
+        beta2=args.beta2,
+        weight_decay=args.weight_decay,
+        momentum=args.momentum,
+        adam=args.adam,
+        SGD=args.SGD,
+        device=args.device,
+        verbose=args.verbose,
     )
 
     trainer.train()
