@@ -1,0 +1,41 @@
+artifacts:
+  raw_data_path: "../data/raw/"
+  processed_data_path: "../data/processed/"
+  files_path: "../artifacts/files/"
+  train_models: "../artifacts/checkpoints/train_models/"
+  best_model: "../artifacts/checkpoints/best_model/"
+  metrics_path: "../artifacts/metrics/"
+  train_images: "../artifacts/outputs/train_images/"
+  test_image: "../artifacts/outputs/test_image/"
+
+dataloader:
+  image_path: "./data/raw"
+  image_channels: 3
+  batch_size: 32
+  image_size: 224
+  split_size: 0.30
+
+ViT:
+  patch_size: 16
+  dimension: 256
+  encoder_layer: 1
+  nhead: 8
+  d_model: 256
+  dim_feedforward: 256
+  dropout: 0.1
+  activation: "gelu"
+  layer_norm_eps: 1e-05
+  bias: False
+
+Trainer:
+  epochs: 100
+  lr: 0.001
+  beta1: 0.9 
+  beta2: 0.999
+  weight_decay: 0.01
+  momentum: 0.9
+  adam: True
+  SGD: False
+  device: "cuda"
+  verbose: True
+
