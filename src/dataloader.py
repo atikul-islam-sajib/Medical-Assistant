@@ -20,7 +20,7 @@ class Loader:
     def __init__(
         self,
         image_path: str = "./data/raw",
-        image_channels: int = 3,
+        image_channels: int = 1,
         image_size: int = 224,
         batch_size: int = 64,
         split_size: float = 0.25,
@@ -78,6 +78,7 @@ class Loader:
                 [
                     transforms.Resize((self.image_size, self.image_size)),
                     transforms.ToTensor(),
+                    transforms.Grayscale(num_output_channels=1),
                     transforms.CenterCrop((self.image_size, self.image_size)),
                     transforms.Normalize([0.5], [0.5]),
                 ]
@@ -118,10 +119,10 @@ class Loader:
         train_dataset = self.split_dataset(X=self.train_images, y=self.train_labels)
 
         return {
-            "X_train": torch.stack(train_dataset["X_train"][:200]).float(),
-            "X_test": torch.stack(train_dataset["X_test"][:200]).float(),
-            "y_train": torch.tensor(train_dataset["y_train"][:50], dtype=torch.long),
-            "y_test": torch.tensor(train_dataset["y_test"][:50], dtype=torch.long),
+            "X_train": torch.stack(train_dataset["X_train"][:600]).float(),
+            "X_test": torch.stack(train_dataset["X_test"][:600]).float(),
+            "y_train": torch.tensor(train_dataset["y_train"][:200], dtype=torch.long),
+            "y_test": torch.tensor(train_dataset["y_test"][:200], dtype=torch.long),
             "valid_images": torch.stack(self.valid_images[:20]).float(),
             "valid_labels": torch.tensor(self.valid_labels[:20], dtype=torch.long),
         }
@@ -202,5 +203,5 @@ if __name__ == "__main__":
         split_size=split_size,
     )
 
-    loader.unzip_folder()
+    # loader.unzip_folder()
     loader.create_dataloader()

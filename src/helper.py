@@ -9,7 +9,6 @@ sys.path.append("./src/")
 from utils import load_files
 from ViT import ViTWithClassifier
 
-
 class Criterion(nn.Module):
     def __init__(self, loss_function: str = "cross_entropy", reduction: str = "mean"):
         super(Criterion, self).__init__()
@@ -19,17 +18,16 @@ class Criterion(nn.Module):
         if loss_function == "cross_entropy":
             self.criterion = nn.CrossEntropyLoss(reduction=self.reduction)
         elif loss_function == "cross_entropy_with_logits":
-            self.criterion = nn.CrossEntropyLossWithLogits(reduction=self.reduction)
+            self.criterion = nn.CrossEntropyLoss(reduction=self.reduction)
         else:
             raise ValueError("Invalid loss function")
 
-    def forward(self, actual: torch.Tensor, predicted: torch.Tensor):
-        if not isinstance(actual, torch.Tensor) or not isinstance(
-            predicted, torch.Tensor
-        ):
-            raise ValueError("Input must be a torch.Tensor".capitalize())
+    def forward(self, predicted: torch.Tensor, actual: torch.Tensor):
+        if not isinstance(actual, torch.Tensor) or not isinstance(predicted, torch.Tensor):
+            raise ValueError("Inputs must be torch.Tensors")
 
-        return self.criterion(actual, predicted)
+        return self.criterion(predicted, actual)
+
 
 
 def load_dataloader():
@@ -65,10 +63,10 @@ def helper(**kwargs):
             image_size=224,
             patch_size=16,
             target_size=4,
-            encoder_layer=4,
+            encoder_layer=1,
             nhead=8,
             d_model=256,
-            dim_feedforward=2048,
+            dim_feedforward=256,
             dropout=0.1,
             activation="gelu",
             layer_norm_eps=1e-05,

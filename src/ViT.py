@@ -51,10 +51,7 @@ class Classifier(nn.Module):
             self.out_features = self.out_features // 4
 
         self.layers += [
-            nn.Sequential(
-                nn.Linear(in_features=self.in_features, out_features=4),
-                nn.Softmax(dim=1),
-            )
+            nn.Sequential(nn.Linear(in_features=self.in_features, out_features=4))
         ]
 
         self.classifier = nn.Sequential(*self.layers)
@@ -159,7 +156,7 @@ class ViTWithClassifier(nn.Module):
 
         self.classifier = Classifier(
             dimension=self.d_model,
-            dropout=self.dropout,
+            dropout=self.dropout * 2,
             activation=self.activation,
         )
 
