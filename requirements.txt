@@ -15,3 +15,10 @@ torchmetrics
 scikit-image
 opencv-python
 nltk
+python-dotenv
+langchain-openai
+ipykernel
+langchain
+langchain-huggingface
+langchain-community
+langchain-google-genai
