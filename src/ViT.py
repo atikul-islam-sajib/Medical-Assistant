@@ -8,8 +8,11 @@ from torchview import draw_graph
 
 sys.path.append("./src/")
 
-from patch_embedding import PatchEmbedding
-from transformer_block import TransformerEncoderBlock
+try:
+    from patch_embedding import PatchEmbedding
+    from transformer_block import TransformerEncoderBlock
+except ImportError:
+    print("Error: Failed to import modules from src/ directory")
 
 
 class Classifier(nn.Module):

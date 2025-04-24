@@ -117,30 +117,6 @@
         "documentation": {}
     },
     {
-        "label": "PatchEmbedding",
-        "importPath": "patch_embedding",
-        "description": "patch_embedding",
-        "isExtraImport": true,
-        "detail": "patch_embedding",
-        "documentation": {}
-    },
-    {
-        "label": "PatchEmbedding",
-        "importPath": "patch_embedding",
-        "description": "patch_embedding",
-        "isExtraImport": true,
-        "detail": "patch_embedding",
-        "documentation": {}
-    },
-    {
-        "label": "TransformerEncoderBlock",
-        "importPath": "transformer_block",
-        "description": "transformer_block",
-        "isExtraImport": true,
-        "detail": "transformer_block",
-        "documentation": {}
-    },
-    {
         "label": "cv2",
         "kind": 6,
         "isExtraImport": true,
@@ -636,6 +612,14 @@
         "importPath": "unittest",
         "description": "unittest",
         "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "PatchEmbedding",
+        "importPath": "patch_embedding",
+        "description": "patch_embedding",
+        "isExtraImport": true,
+        "detail": "patch_embedding",
         "documentation": {}
     },
     {
