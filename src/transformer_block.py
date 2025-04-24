@@ -70,6 +70,13 @@ class TransformerEncoderBlock(nn.Module):
             x = self.layer_norm2(x)
 
             return x
+        
+    @staticmethod
+    def total_parameters(model: TransformerEncoderBlock):
+        if not isinstance(model, TransformerEncoderBlock):
+            raise TypeError("Input must be a TransformerEncoderBlock")
+        else:
+            return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
 
 if __name__ == "__main__":
