@@ -174,6 +174,13 @@ class ViTWithClassifier(nn.Module):
             x = self.classifier(x)
 
             return x
+        
+    @staticmethod
+    def total_parameters(model: ViTWithClassifier):
+        if not isinstance(model, ViTWithClassifier):
+            raise TypeError("Input must be a ViTWithClassifier")
+        else:
+            return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
 
 if __name__ == "__main__":
