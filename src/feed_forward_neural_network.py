@@ -61,6 +61,13 @@ class FeedForwardNeuralNetwork(nn.Module):
             x = self.network(x)
             return x
 
+    @staticmethod
+    def total_parameters(model: FeedForwardNeuralNetwork):
+        if not isinstance(model, FeedForwardNeuralNetwork):
+            raise TypeError("Input must be a FeedForwardNeuralNetwork")
+        else:
+            return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -104,5 +111,5 @@ if __name__ == "__main__":
         draw_graph(model=network, input_data=images).visual_graph.render(
             filename="./artifacts/files/FFNN", format="png"
         )
-        
+
         print("FFNN saves in the folder ./artifacts/files/FFNN.png")
