@@ -4,6 +4,7 @@ import torch
 import argparse
 from tqdm import tqdm
 import torch.nn as nn
+from torchview import draw_graph
 
 sys.path.append("./src/")
 
@@ -213,6 +214,8 @@ if __name__ == "__main__":
     parser.add_argument("--bias", type=bool, default=False, help="Bias")
     parser.add_argument("--target_size", type=int, default=4, help="Target size")
     parser.add_argument("--batch_size", type=int, default=16, help="Batch size")
+    parser.add_argument("--display", type=bool, default=True, help="Display the graph")
+    
     args = parser.parse_args()
 
     image_channels = args.image_channels
@@ -251,3 +254,12 @@ if __name__ == "__main__":
         args.batch_size,
         target_size,
     ), "ViTWithClassifier is not working correctly".capitalize()
+    
+
+    if args.display:
+        draw_graph(model=vit, input_data=images).visual_graph.render(
+            filename="./artifacts/files/ViT", format="png"
+        )
+        print(
+            "Layer Normalization graph has been saved to ./artifacts/files/ViT.png"
+        )
