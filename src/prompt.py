@@ -2,24 +2,23 @@ from langchain_core.prompts import PromptTemplate
 
 classifier_prompt = PromptTemplate(
     input_variables=["predicted_disease", "predicted_probability"],
-    template="""
-You are a knowledgeable assistant in the medical field.
+    template="""You are a knowledgeable assistant in the medical field.
 
 A CNN-based model has analyzed a medical image and predicted the following:
 
-- **Predicted Disease**: {predicted_disease}  
-- **Prediction Confidence**: {predicted_probability}
+- Predicted Disease: {predicted_disease}
+- Prediction Confidence: {predicted_probability}
 
-Please provide a clear, well-researched, and comprehensive explanation of this disease. Include:
+Start your response by stating the predicted disease and the confidence level, then provide a clear, well-researched, and comprehensive explanation. Include:
 - A brief description of the disease
 - Common symptoms
 - Causes and risk factors
 - Standard treatment options
 - Any necessary follow-up or precautions
 
-Keep the explanation medically accurate yet easy to understand.
-"""
+Keep the explanation medically accurate yet easy to understand."""
 )
+
 
 QA_prompt = PromptTemplate(
     input_variables=["question"],

@@ -119,10 +119,10 @@ class Loader:
         train_dataset = self.split_dataset(X=self.train_images, y=self.train_labels)
 
         return {
-            "X_train": torch.stack(train_dataset["X_train"][:600]).float(),
-            "X_test": torch.stack(train_dataset["X_test"][:600]).float(),
-            "y_train": torch.tensor(train_dataset["y_train"][:200], dtype=torch.long),
-            "y_test": torch.tensor(train_dataset["y_test"][:200], dtype=torch.long),
+            "X_train": torch.stack(train_dataset["X_train"][:200]).float(),
+            "X_test": torch.stack(train_dataset["X_test"][:200]).float(),
+            "y_train": torch.tensor(train_dataset["y_train"][:50], dtype=torch.long),
+            "y_test": torch.tensor(train_dataset["y_test"][:50], dtype=torch.long),
             "valid_images": torch.stack(self.valid_images[:20]).float(),
             "valid_labels": torch.tensor(self.valid_labels[:20], dtype=torch.long),
         }
@@ -181,7 +181,7 @@ if __name__ == "__main__":
         "--image_size", type=int, default=224, help="Image size".capitalize()
     )
     parser.add_argument(
-        "--batch_size", type=int, default=16, help="Batch size".capitalize()
+        "--batch_size", type=int, default=4, help="Batch size".capitalize()
     )
     parser.add_argument(
         "--split_size", type=float, default=0.30, help="Split size".capitalize()
@@ -203,5 +203,5 @@ if __name__ == "__main__":
         split_size=split_size,
     )
 
-    # loader.unzip_folder()
+    loader.unzip_folder()
     loader.create_dataloader()

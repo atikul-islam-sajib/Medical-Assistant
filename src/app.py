@@ -1,11 +1,9 @@
 import os
 import sys
 import cv2
-import math
 import torch
-import torch.nn as nn
+import streamlit as st
 from PIL import Image
-import argparse
 from torchvision import transforms
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
@@ -47,7 +45,6 @@ class MedicalAssistant:
     def load_model(self):
         path = "./artifacts/checkpoints/best_model/best_model.pth"
         model = torch.load(path)
-
         state_dict = model["model_state_dict"]
         self.classifier.load_state_dict(state_dict=state_dict)
 
@@ -84,7 +81,6 @@ class MedicalAssistant:
 
         with torch.no_grad():
             predicted = self.classifier(image)
-
             score = torch.softmax(input=predicted, dim=1)
             score, _ = torch.max(score, dim=1)
             score = f"{round(score.item() * 100, 2)}%"
@@ -92,17 +88,16 @@ class MedicalAssistant:
             predicted = torch.argmax(predicted, dim=1)[0]
 
             if predicted == 0:
-                labels = "Brain: glioma".title()
+                labels = "Brain: Glioma"
             elif predicted == 1:
-                labels = "Brain: Meningioma".title()
+                labels = "Brain: Meningioma"
             elif predicted == 2:
-                labels = "Brain: No Tumor".title()
+                labels = "Brain: No Tumor"
             else:
-                labels = "Brain: Pituitary".title()
+                labels = "Brain: Pituitary"
 
         load_dotenv()
-
-        llm = ChatOpenAI()
+        llm = ChatOpenAI(model = gpt-4.1)
         parser = StrOutputParser()
 
         initial_response = classifier_prompt | llm | parser
@@ -110,35 +105,33 @@ class MedicalAssistant:
             {"predicted_disease": labels, "predicted_probability": score}
         )
 
-        print(initial_response)
+        st.write("### AI Initial Response")
+        st.write(initial_response)
 
-        self.memory.append("AI Response:\n" + " " + initial_response)
+        self.memory.append("AI Response:\n" + initial_response)
 
-        while True:
-            question = input("Human: ")
-            if question == "exit":
-                break
-
-            question = "\n".join(self.memory) + "\nHuman: " + question
-
-            response = QA_prompt | llm | parser
-            response = response.invoke({"question": question})
-
-            self.memory.append("AI Response:\n" + " " + response)
-
-            print("AI:\n", response)
+        st.write("### Ask Follow-up Questions")
+        for i in range(5):  # Allow up to 5 questions
+            question = st.text_input(f"Your Question {i+1}:", key=f"q{i}")
+            if question:
+                full_prompt = "\n".join(self.memory) + "\nHuman: " + question
+                response = QA_prompt | llm | parser
+                answer = response.invoke({"question": full_prompt})
+                self.memory.append("AI Response:\n" + answer)
+                st.write(f"**AI Response {i+1}:**")
+                st.write(answer)
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Medical Assistant chatbot".title())
-    parser.add_argument("--image", type=str, help="Path to the image file".capitalize())
-    parser.add_argument(
-        "--device", type=str, help="Device to run the model on".capitalize()
-    )
+st.title("Medical Assistant Chatbot")
 
-    args = parser.parse_args()
+uploaded_image = st.file_uploader("Upload a brain MRI scan image", type=["jpg", "jpeg", "png"])
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    assistant = MedicalAssistant(device=args.device, image=args.image)
-
+if uploaded_image is not None:
+    image_path = "./temp_uploaded_image.jpg"
+    with open(image_path, "wb") as f:
+        f.write(uploaded_image.read())
+        
+    assistant = MedicalAssistant(device=device, image=image_path)
     assistant.load_model()
     assistant.chat()

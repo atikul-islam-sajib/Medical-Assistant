@@ -221,7 +221,7 @@ class Trainer:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Training for the Medical Assistant")
     parser.add_argument("--epochs", type=int, default=100, help="Number of epochs")
-    parser.add_argument("--lr", type=float, default=0.001, help="Learning rate")
+    parser.add_argument("--lr", type=float, default=0.0001, help="Learning rate")
     parser.add_argument("--beta1", type=float, default=0.9, help="Beta1 for Adam")
     parser.add_argument("--beta2", type=float, default=0.999, help="Beta2 for Adam")
     parser.add_argument(
