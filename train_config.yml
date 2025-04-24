@@ -14,6 +14,7 @@ dataloader:
   batch_size: 32
   image_size: 224
   split_size: 0.30
+  target_size: 4
 
 ViT:
   patch_size: 16
