@@ -6,8 +6,9 @@ import torch.nn as nn
 
 sys.path.append("./src/")
 
-from utils import load_files
 from ViT import ViTWithClassifier
+from utils import load_files, config_files
+
 
 class Criterion(nn.Module):
     def __init__(self, loss_function: str = "cross_entropy", reduction: str = "mean"):
@@ -23,11 +24,12 @@ class Criterion(nn.Module):
             raise ValueError("Invalid loss function")
 
     def forward(self, predicted: torch.Tensor, actual: torch.Tensor):
-        if not isinstance(actual, torch.Tensor) or not isinstance(predicted, torch.Tensor):
+        if not isinstance(actual, torch.Tensor) or not isinstance(
+            predicted, torch.Tensor
+        ):
             raise ValueError("Inputs must be torch.Tensors")
 
         return self.criterion(predicted, actual)
-
 
 
 def load_dataloader():
@@ -59,18 +61,18 @@ def helper(**kwargs):
 
     if model is None:
         classifier = ViTWithClassifier(
-            image_channels=1,
-            image_size=224,
-            patch_size=16,
-            target_size=4,
-            encoder_layer=1,
-            nhead=8,
-            d_model=256,
-            dim_feedforward=256,
-            dropout=0.1,
-            activation="gelu",
-            layer_norm_eps=1e-05,
-            bias=False,
+            image_channels=config_files()["dataloader"]["image_channels"],
+            image_size=config_files()["dataloader"]["image_size"],
+            patch_size=config_files()["ViT"]["patch_size"],
+            target_size=config_files()["dataloader"]["target_size"],
+            encoder_layer=config_files()["ViT"]["encoder_layer"],
+            nhead=config_files()["ViT"]["nhead"],
+            d_model=config_files()["ViT"]["d_model"],
+            dim_feedforward=config_files()["ViT"]["dim_feedforward"],
+            dropout=config_files()["ViT"]["dropout"],
+            activation=config_files()["ViT"]["activation"],
+            layer_norm_eps=config_files()["ViT"]["layer_norm_eps"],
+            bias=config_files()["ViT"]["bias"],
         )
     else:
         classifier = model
