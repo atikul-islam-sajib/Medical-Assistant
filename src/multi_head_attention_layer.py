@@ -105,6 +105,13 @@ class MultiHeadAttentionLayer(nn.Module):
             ), "Attention output must have the same size as input".capitalize()
 
             return attention
+        
+    @staticmethod
+    def total_parameters(model: MultiHeadAttentionLayer):
+        if not isinstance(model, MultiHeadAttentionLayer):
+            raise TypeError("Input must be a MultiHeadAttentionLayer")
+        else:
+            return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
 
 if __name__ == "__main__":
