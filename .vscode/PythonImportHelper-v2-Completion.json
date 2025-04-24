@@ -255,28 +255,11 @@
         "documentation": {}
     },
     {
-        "label": "zipfile",
-        "kind": 6,
+        "label": "config_files",
+        "importPath": "utils",
+        "description": "utils",
         "isExtraImport": true,
-        "importPath": "zipfile",
-        "description": "zipfile",
-        "detail": "zipfile",
-        "documentation": {}
-    },
-    {
-        "label": "DataLoader",
-        "importPath": "torch.utils.data",
-        "description": "torch.utils.data",
-        "isExtraImport": true,
-        "detail": "torch.utils.data",
-        "documentation": {}
-    },
-    {
-        "label": "train_test_split",
-        "importPath": "sklearn.model_selection",
-        "description": "sklearn.model_selection",
-        "isExtraImport": true,
-        "detail": "sklearn.model_selection",
+        "detail": "utils",
         "documentation": {}
     },
     {
@@ -357,6 +340,55 @@
         "description": "utils",
         "isExtraImport": true,
         "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "Tester",
+        "importPath": "tester",
+        "description": "tester",
+        "isExtraImport": true,
+        "detail": "tester",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "importPath": "trainer",
+        "description": "trainer",
+        "isExtraImport": true,
+        "detail": "trainer",
+        "documentation": {}
+    },
+    {
+        "label": "Loader",
+        "importPath": "dataloader",
+        "description": "dataloader",
+        "isExtraImport": true,
+        "detail": "dataloader",
+        "documentation": {}
+    },
+    {
+        "label": "zipfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "zipfile",
+        "description": "zipfile",
+        "detail": "zipfile",
+        "documentation": {}
+    },
+    {
+        "label": "DataLoader",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
         "documentation": {}
     },
     {
@@ -665,6 +697,15 @@
         "description": "src.app",
         "peekOfCode": "device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\nif uploaded_image is not None:\n    image_path = \"./temp_uploaded_image.jpg\"\n    with open(image_path, \"wb\") as f:\n        f.write(uploaded_image.read())\n    assistant = MedicalAssistant(device=device, image=image_path)\n    assistant.load_model()\n    assistant.chat()",
         "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "cli",
+        "kind": 2,
+        "importPath": "src.cli",
+        "description": "src.cli",
+        "peekOfCode": "def cli():\n    parser = argparse.ArgumentParser(description=\"Medical Assistant CLI\".capitalize())\n    parser.add_argument(\n        \"--image_path\",\n        type=str,\n        default=\"./data/raw/dataset.zip\",\n        help=\"Path to the dataset\".capitalize(),\n    )\n    parser.add_argument(\n        \"--image_channels\",",
+        "detail": "src.cli",
         "documentation": {}
     },
     {
