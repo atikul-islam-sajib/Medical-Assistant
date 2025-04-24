@@ -1,0 +1,868 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "torch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "torch.nn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.nn",
+        "description": "torch.nn",
+        "detail": "torch.nn",
+        "documentation": {}
+    },
+    {
+        "label": "draw_graph",
+        "importPath": "torchview",
+        "description": "torchview",
+        "isExtraImport": true,
+        "detail": "torchview",
+        "documentation": {}
+    },
+    {
+        "label": "draw_graph",
+        "importPath": "torchview",
+        "description": "torchview",
+        "isExtraImport": true,
+        "detail": "torchview",
+        "documentation": {}
+    },
+    {
+        "label": "draw_graph",
+        "importPath": "torchview",
+        "description": "torchview",
+        "isExtraImport": true,
+        "detail": "torchview",
+        "documentation": {}
+    },
+    {
+        "label": "draw_graph",
+        "importPath": "torchview",
+        "description": "torchview",
+        "isExtraImport": true,
+        "detail": "torchview",
+        "documentation": {}
+    },
+    {
+        "label": "draw_graph",
+        "importPath": "torchview",
+        "description": "torchview",
+        "isExtraImport": true,
+        "detail": "torchview",
+        "documentation": {}
+    },
+    {
+        "label": "draw_graph",
+        "importPath": "torchview",
+        "description": "torchview",
+        "isExtraImport": true,
+        "detail": "torchview",
+        "documentation": {}
+    },
+    {
+        "label": "PatchEmbedding",
+        "importPath": "patch_embedding",
+        "description": "patch_embedding",
+        "isExtraImport": true,
+        "detail": "patch_embedding",
+        "documentation": {}
+    },
+    {
+        "label": "PatchEmbedding",
+        "importPath": "patch_embedding",
+        "description": "patch_embedding",
+        "isExtraImport": true,
+        "detail": "patch_embedding",
+        "documentation": {}
+    },
+    {
+        "label": "TransformerEncoderBlock",
+        "importPath": "transformer_block",
+        "description": "transformer_block",
+        "isExtraImport": true,
+        "detail": "transformer_block",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "transforms",
+        "importPath": "torchvision",
+        "description": "torchvision",
+        "isExtraImport": true,
+        "detail": "torchvision",
+        "documentation": {}
+    },
+    {
+        "label": "transforms",
+        "importPath": "torchvision",
+        "description": "torchvision",
+        "isExtraImport": true,
+        "detail": "torchvision",
+        "documentation": {}
+    },
+    {
+        "label": "transforms",
+        "importPath": "torchvision",
+        "description": "torchvision",
+        "isExtraImport": true,
+        "detail": "torchvision",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "ChatOpenAI",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
+        "isExtraImport": true,
+        "detail": "langchain_openai",
+        "documentation": {}
+    },
+    {
+        "label": "ChatOpenAI",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
+        "isExtraImport": true,
+        "detail": "langchain_openai",
+        "documentation": {}
+    },
+    {
+        "label": "StrOutputParser",
+        "importPath": "langchain_core.output_parsers",
+        "description": "langchain_core.output_parsers",
+        "isExtraImport": true,
+        "detail": "langchain_core.output_parsers",
+        "documentation": {}
+    },
+    {
+        "label": "StrOutputParser",
+        "importPath": "langchain_core.output_parsers",
+        "description": "langchain_core.output_parsers",
+        "isExtraImport": true,
+        "detail": "langchain_core.output_parsers",
+        "documentation": {}
+    },
+    {
+        "label": "zipfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "zipfile",
+        "description": "zipfile",
+        "detail": "zipfile",
+        "documentation": {}
+    },
+    {
+        "label": "DataLoader",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "dump_files",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "config_files",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "load_files",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "config_files",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "device_init",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "device_init",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "load_files",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "config_files",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "device_init",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "config_files",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "torch.optim",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.optim",
+        "description": "torch.optim",
+        "detail": "torch.optim",
+        "documentation": {}
+    },
+    {
+        "label": "ViTWithClassifier",
+        "importPath": "ViT",
+        "description": "ViT",
+        "isExtraImport": true,
+        "detail": "ViT",
+        "documentation": {}
+    },
+    {
+        "label": "ViTWithClassifier",
+        "importPath": "ViT",
+        "description": "ViT",
+        "isExtraImport": true,
+        "detail": "ViT",
+        "documentation": {}
+    },
+    {
+        "label": "ViTWithClassifier",
+        "importPath": "ViT",
+        "description": "ViT",
+        "isExtraImport": true,
+        "detail": "ViT",
+        "documentation": {}
+    },
+    {
+        "label": "ViTWithClassifier",
+        "importPath": "ViT",
+        "description": "ViT",
+        "isExtraImport": true,
+        "detail": "ViT",
+        "documentation": {}
+    },
+    {
+        "label": "ViTWithClassifier",
+        "importPath": "ViT",
+        "description": "ViT",
+        "isExtraImport": true,
+        "detail": "ViT",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "classifier_prompt",
+        "importPath": "prompt",
+        "description": "prompt",
+        "isExtraImport": true,
+        "detail": "prompt",
+        "documentation": {}
+    },
+    {
+        "label": "QA_prompt",
+        "importPath": "prompt",
+        "description": "prompt",
+        "isExtraImport": true,
+        "detail": "prompt",
+        "documentation": {}
+    },
+    {
+        "label": "warnings",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "warnings",
+        "description": "warnings",
+        "detail": "warnings",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "accuracy_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "precision_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "recall_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "f1_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "confusion_matrix",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "classification_report",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "accuracy_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "helper",
+        "importPath": "helper",
+        "description": "helper",
+        "isExtraImport": true,
+        "detail": "helper",
+        "documentation": {}
+    },
+    {
+        "label": "Criterion",
+        "importPath": "helper",
+        "description": "helper",
+        "isExtraImport": true,
+        "detail": "helper",
+        "documentation": {}
+    },
+    {
+        "label": "helper",
+        "importPath": "helper",
+        "description": "helper",
+        "isExtraImport": true,
+        "detail": "helper",
+        "documentation": {}
+    },
+    {
+        "label": "Criterion",
+        "importPath": "helper",
+        "description": "helper",
+        "isExtraImport": true,
+        "detail": "helper",
+        "documentation": {}
+    },
+    {
+        "label": "LayerNormalization",
+        "importPath": "layer_normalization",
+        "description": "layer_normalization",
+        "isExtraImport": true,
+        "detail": "layer_normalization",
+        "documentation": {}
+    },
+    {
+        "label": "MultiHeadAttentionLayer",
+        "importPath": "multi_head_attention_layer",
+        "description": "multi_head_attention_layer",
+        "isExtraImport": true,
+        "detail": "multi_head_attention_layer",
+        "documentation": {}
+    },
+    {
+        "label": "MultiHeadAttentionLayer",
+        "importPath": "multi_head_attention_layer",
+        "description": "multi_head_attention_layer",
+        "isExtraImport": true,
+        "detail": "multi_head_attention_layer",
+        "documentation": {}
+    },
+    {
+        "label": "FeedForwardNeuralNetwork",
+        "importPath": "feed_forward_neural_network",
+        "description": "feed_forward_neural_network",
+        "isExtraImport": true,
+        "detail": "feed_forward_neural_network",
+        "documentation": {}
+    },
+    {
+        "label": "yaml",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
+        "documentation": {}
+    },
+    {
+        "label": "joblib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "joblib",
+        "description": "joblib",
+        "detail": "joblib",
+        "documentation": {}
+    },
+    {
+        "label": "unittest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "find_packages",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "Classifier",
+        "kind": 6,
+        "importPath": "src.ViT",
+        "description": "src.ViT",
+        "peekOfCode": "class Classifier(nn.Module):\n    def __init__(\n        self, dimension: int = 768, dropout: float = 0.3, activation: str = \"leaky\"\n    ):\n        super(Classifier, self).__init__()\n        self.dimension = dimension\n        self.dropout = dropout\n        self.activation_func = activation\n        if self.activation_func == \"relu\":\n            self.activation = nn.ReLU(inplace=True)",
+        "detail": "src.ViT",
+        "documentation": {}
+    },
+    {
+        "label": "ViTWithClassifier",
+        "kind": 6,
+        "importPath": "src.ViT",
+        "description": "src.ViT",
+        "peekOfCode": "class ViTWithClassifier(nn.Module):\n    def __init__(\n        self,\n        image_channels: int = 3,\n        image_size: int = 224,\n        patch_size: int = 16,\n        target_size: int = 4,\n        encoder_layer: int = 4,\n        nhead: int = 8,\n        d_model: int = 768,",
+        "detail": "src.ViT",
+        "documentation": {}
+    },
+    {
+        "label": "MedicalAssistant",
+        "kind": 6,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "class MedicalAssistant:\n    def __init__(self, device: str = \"cuda\", image: str = None):\n        self.device = device\n        self.image = image\n        self.image_channels = 1\n        self.device = device_init(device=device)\n        self.classifier = ViTWithClassifier(\n            image_channels=config_files()[\"dataloader\"][\"image_channels\"],\n            image_size=config_files()[\"dataloader\"][\"image_size\"],\n            patch_size=config_files()[\"ViT\"][\"patch_size\"],",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "uploaded_image",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "uploaded_image = st.file_uploader(\"Upload a brain MRI scan image\", type=[\"jpg\", \"jpeg\", \"png\"])\ndevice = \"cuda\" if torch.cuda.is_available() else \"cpu\"\nif uploaded_image is not None:\n    image_path = \"./temp_uploaded_image.jpg\"\n    with open(image_path, \"wb\") as f:\n        f.write(uploaded_image.read())\n    assistant = MedicalAssistant(device=device, image=image_path)\n    assistant.load_model()\n    assistant.chat()",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "device",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\nif uploaded_image is not None:\n    image_path = \"./temp_uploaded_image.jpg\"\n    with open(image_path, \"wb\") as f:\n        f.write(uploaded_image.read())\n    assistant = MedicalAssistant(device=device, image=image_path)\n    assistant.load_model()\n    assistant.chat()",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "Loader",
+        "kind": 6,
+        "importPath": "src.dataloader",
+        "description": "src.dataloader",
+        "peekOfCode": "class Loader:\n    def __init__(\n        self,\n        image_path: str = \"./data/raw\",\n        image_channels: int = 1,\n        image_size: int = 224,\n        batch_size: int = 64,\n        split_size: float = 0.25,\n    ):\n        self.image_path = image_path",
+        "detail": "src.dataloader",
+        "documentation": {}
+    },
+    {
+        "label": "FeedForwardNeuralNetwork",
+        "kind": 6,
+        "importPath": "src.feed_forward_neural_network",
+        "description": "src.feed_forward_neural_network",
+        "peekOfCode": "class FeedForwardNeuralNetwork(nn.Module):\n    def __init__(\n        self,\n        d_model: int = 768,\n        dim_feedforward: int = 2048,\n        dropout: float = 0.1,\n        activation: str = \"gelu\",\n    ):\n        super(FeedForwardNeuralNetwork, self).__init__()\n        self.d_model = d_model",
+        "detail": "src.feed_forward_neural_network",
+        "documentation": {}
+    },
+    {
+        "label": "Criterion",
+        "kind": 6,
+        "importPath": "src.helper",
+        "description": "src.helper",
+        "peekOfCode": "class Criterion(nn.Module):\n    def __init__(self, loss_function: str = \"cross_entropy\", reduction: str = \"mean\"):\n        super(Criterion, self).__init__()\n        self.loss_function = loss_function\n        self.reduction = reduction\n        if loss_function == \"cross_entropy\":\n            self.criterion = nn.CrossEntropyLoss(reduction=self.reduction)\n        elif loss_function == \"cross_entropy_with_logits\":\n            self.criterion = nn.CrossEntropyLoss(reduction=self.reduction)\n        else:",
+        "detail": "src.helper",
+        "documentation": {}
+    },
+    {
+        "label": "load_dataloader",
+        "kind": 2,
+        "importPath": "src.helper",
+        "description": "src.helper",
+        "peekOfCode": "def load_dataloader():\n    dataloader_path = \"./data/processed\"\n    train_dataloader = os.path.join(dataloader_path, \"train_dataloader.pkl\")\n    test_dataloader = os.path.join(dataloader_path, \"test_dataloader.pkl\")\n    valid_dataloader = os.path.join(dataloader_path, \"valid_dataloader.pkl\")\n    train_dataloader = load_files(filename=train_dataloader)\n    test_dataloader = load_files(filename=test_dataloader)\n    valid_dataloader = load_files(filename=valid_dataloader)\n    return {\n        \"train_dataloader\": train_dataloader,",
+        "detail": "src.helper",
+        "documentation": {}
+    },
+    {
+        "label": "helper",
+        "kind": 2,
+        "importPath": "src.helper",
+        "description": "src.helper",
+        "peekOfCode": "def helper(**kwargs):\n    model = kwargs[\"model\"]\n    lr: float = float(kwargs[\"lr\"])\n    weight_decay: float = float(kwargs[\"weight_decay\"])\n    adam: bool = kwargs[\"adam\"]\n    beta1: float = float(kwargs[\"beta1\"])\n    beta2: float = float(kwargs[\"beta2\"])\n    SGD: bool = kwargs[\"SGD\"]\n    momentum: float = float(kwargs[\"momentum\"])\n    if model is None:",
+        "detail": "src.helper",
+        "documentation": {}
+    },
+    {
+        "label": "LayerNormalization",
+        "kind": 6,
+        "importPath": "src.layer_normalization",
+        "description": "src.layer_normalization",
+        "peekOfCode": "class LayerNormalization(nn.Module):\n    def __init__(self, normalized_shape: int = 768, eps=1e-05):\n        super(LayerNormalization, self).__init__()\n        self.dimension = normalized_shape\n        self.eps = eps\n        self.alpha = nn.Parameter(\n            data=torch.ones(\n                (\n                    self.dimension // self.dimension,\n                    self.dimension // self.dimension,",
+        "detail": "src.layer_normalization",
+        "documentation": {}
+    },
+    {
+        "label": "MedicalAssistant",
+        "kind": 6,
+        "importPath": "src.medical_assistant",
+        "description": "src.medical_assistant",
+        "peekOfCode": "class MedicalAssistant:\n    def __init__(self, device: str = \"cuda\", image: str = None):\n        self.device = device\n        self.image = image\n        self.image_channels = 1\n        self.device = device_init(device=device)\n        self.classifier = ViTWithClassifier(\n            image_channels=1,\n            image_size=224,\n            patch_size=16,",
+        "detail": "src.medical_assistant",
+        "documentation": {}
+    },
+    {
+        "label": "MultiHeadAttentionLayer",
+        "kind": 6,
+        "importPath": "src.multi_head_attention_layer",
+        "description": "src.multi_head_attention_layer",
+        "peekOfCode": "class MultiHeadAttentionLayer(nn.Module):\n    def __init__(self, nheads: int = 6, dimension: int = 768):\n        super(MultiHeadAttentionLayer, self).__init__()\n        self.nheads = nheads\n        self.dimension = dimension\n        assert (\n            self.dimension % self.nheads == 0\n        ), \"Dimension must be divisible by number of heads\".capitalize()\n        warnings.warn(\n            \"Invalid number of dimensions provided. To avoid errors, ensure the dimension is calculated as: in_channels × patch_size × patch_size.\"",
+        "detail": "src.multi_head_attention_layer",
+        "documentation": {}
+    },
+    {
+        "label": "scaled_dot_product",
+        "kind": 2,
+        "importPath": "src.multi_head_attention_layer",
+        "description": "src.multi_head_attention_layer",
+        "peekOfCode": "def scaled_dot_product(query: torch.Tensor, key: torch.Tensor, value: torch.Tensor):\n    if (\n        not isinstance(query, torch.Tensor)\n        and isinstance(key, torch.Tensor)\n        and isinstance(value, torch.Tensor)\n    ):\n        raise TypeError(\"All inputs must be torch.Tensor\".capitalize())\n    key = key.transpose(-2, -1)\n    scores = torch.matmul(query, key) / math.sqrt(key.size(-1))\n    scores = torch.softmax(scores, dim=-1)",
+        "detail": "src.multi_head_attention_layer",
+        "documentation": {}
+    },
+    {
+        "label": "PositionalEncoding",
+        "kind": 6,
+        "importPath": "src.patch_embedding",
+        "description": "src.patch_embedding",
+        "peekOfCode": "class PositionalEncoding(nn.Module):\n    def __init__(self, dimension: int = 512):\n        super(PositionalEncoding, self).__init__()\n        self.dimension = dimension\n        self.encoding = nn.Parameter(\n            torch.randn(\n                size=(\n                    self.dimension // self.dimension,\n                    self.dimension // self.dimension,\n                    self.dimension,",
+        "detail": "src.patch_embedding",
+        "documentation": {}
+    },
+    {
+        "label": "PatchEmbedding",
+        "kind": 6,
+        "importPath": "src.patch_embedding",
+        "description": "src.patch_embedding",
+        "peekOfCode": "class PatchEmbedding(nn.Module):\n    def __init__(\n        self,\n        image_channels: int = 3,\n        image_size: int = 224,\n        patch_size: int = 16,\n        embedding_dimension: int = 512,\n    ):\n        super(PatchEmbedding, self).__init__()\n        self.image_channels = image_channels",
+        "detail": "src.patch_embedding",
+        "documentation": {}
+    },
+    {
+        "label": "classifier_prompt",
+        "kind": 5,
+        "importPath": "src.prompt",
+        "description": "src.prompt",
+        "peekOfCode": "classifier_prompt = PromptTemplate(\n    input_variables=[\"predicted_disease\", \"predicted_probability\"],\n    template=\"\"\"You are a knowledgeable assistant in the medical field.\nA CNN-based model has analyzed a medical image and predicted the following:\n- Predicted Disease: {predicted_disease}\n- Prediction Confidence: {predicted_probability}\nStart your response by stating the predicted disease and the confidence level, then provide a clear, well-researched, and comprehensive explanation. Include:\n- A brief description of the disease\n- Common symptoms\n- Causes and risk factors",
+        "detail": "src.prompt",
+        "documentation": {}
+    },
+    {
+        "label": "QA_prompt",
+        "kind": 5,
+        "importPath": "src.prompt",
+        "description": "src.prompt",
+        "peekOfCode": "QA_prompt = PromptTemplate(\n    input_variables=[\"question\"],\n    template=\"\"\"\nYou are a helpful and knowledgeable assistant in the medical field.\nThe user is asking a health-related question. Provide a clear, well-researched, and comprehensive response. Be sure to:\n- Explain the answer in simple, understandable terms\n- Provide context (e.g., symptoms, treatments, risk factors, prevention)\n- Reference medical facts or research where applicable\nQuestion: {question}\nAnswer:",
+        "detail": "src.prompt",
+        "documentation": {}
+    },
+    {
+        "label": "Tester",
+        "kind": 6,
+        "importPath": "src.tester",
+        "description": "src.tester",
+        "peekOfCode": "class Tester:\n    def __init__(self, dataset: str = \"test\", device: str = \"cuda\"):\n        self.dataset = dataset\n        self.device = device\n        self.device = device_init(device=device)\n    def load_dataset(self):\n        path = \"./data/processed/\"\n        if self.dataset == \"test\":\n            test_dataloader = os.path.join(path, \"test_dataloader.pkl\")\n            test_dataloader = load_files(filename=test_dataloader)",
+        "detail": "src.tester",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "kind": 6,
+        "importPath": "src.trainer",
+        "description": "src.trainer",
+        "peekOfCode": "class Trainer:\n    def __init__(\n        self,\n        model=None,\n        epochs: int = 100,\n        lr: float = 0.001,\n        beta1: float = 0.5,\n        beta2: float = 0.999,\n        weight_decay: float = 0.0,\n        momentum: float = 0.85,",
+        "detail": "src.trainer",
+        "documentation": {}
+    },
+    {
+        "label": "TransformerEncoderBlock",
+        "kind": 6,
+        "importPath": "src.transformer_block",
+        "description": "src.transformer_block",
+        "peekOfCode": "class TransformerEncoderBlock(nn.Module):\n    def __init__(\n        self,\n        nhead: int = 8,\n        d_model: int = 768,\n        dim_feedforward: int = 2048,\n        dropout: float = 0.1,\n        activation: str = \"gelu\",\n        layer_norm_eps: float = 1e-05,\n        bias: bool = False,",
+        "detail": "src.transformer_block",
+        "documentation": {}
+    },
+    {
+        "label": "config_files",
+        "kind": 2,
+        "importPath": "src.utils",
+        "description": "src.utils",
+        "peekOfCode": "def config_files():\n    with open(\"./train_config.yml\", mode=\"r\") as file:\n        return yaml.safe_load(file)\ndef dump_files(value=None, filename=None):\n    if (value is None) and (filename is None):\n        raise ValueError(\"Either values or filename must be provided\".capitalize())\n    else:\n        joblib.dump(value=value, filename=filename)\ndef load_files(filename: str = None):\n    if filename is None:",
+        "detail": "src.utils",
+        "documentation": {}
+    },
+    {
+        "label": "dump_files",
+        "kind": 2,
+        "importPath": "src.utils",
+        "description": "src.utils",
+        "peekOfCode": "def dump_files(value=None, filename=None):\n    if (value is None) and (filename is None):\n        raise ValueError(\"Either values or filename must be provided\".capitalize())\n    else:\n        joblib.dump(value=value, filename=filename)\ndef load_files(filename: str = None):\n    if filename is None:\n        raise ValueError(\"Filename must be provided\".capitalize())\n    else:\n        return joblib.load(filename=filename)",
+        "detail": "src.utils",
+        "documentation": {}
+    },
+    {
+        "label": "load_files",
+        "kind": 2,
+        "importPath": "src.utils",
+        "description": "src.utils",
+        "peekOfCode": "def load_files(filename: str = None):\n    if filename is None:\n        raise ValueError(\"Filename must be provided\".capitalize())\n    else:\n        return joblib.load(filename=filename)\ndef device_init(device: str = \"cuda\"):\n    if device == \"cuda\":\n        return torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    elif device == \"mps\":\n        return torch.device(\"mps\" if torch.backends.mps.is_available() else \"cpu\")",
+        "detail": "src.utils",
+        "documentation": {}
+    },
+    {
+        "label": "device_init",
+        "kind": 2,
+        "importPath": "src.utils",
+        "description": "src.utils",
+        "peekOfCode": "def device_init(device: str = \"cuda\"):\n    if device == \"cuda\":\n        return torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    elif device == \"mps\":\n        return torch.device(\"mps\" if torch.backends.mps.is_available() else \"cpu\")\n    else:\n        return torch.device(\"cpu\")\ndef weight_init(m):\n    classname = m.__class__.__name__\n    if classname.find(\"Conv\") != -1:",
+        "detail": "src.utils",
+        "documentation": {}
+    },
+    {
+        "label": "weight_init",
+        "kind": 2,
+        "importPath": "src.utils",
+        "description": "src.utils",
+        "peekOfCode": "def weight_init(m):\n    classname = m.__class__.__name__\n    if classname.find(\"Conv\") != -1:\n        nn.init.normal_(m.weight.data, 0.0, 0.02)\n    elif classname.find(\"BatchNorm\") != -1:\n        nn.init.normal_(m.weight.data, 1.0, 0.02)\n        nn.init.constant_(m.bias.data, 0)",
+        "detail": "src.utils",
+        "documentation": {}
+    },
+    {
+        "label": "UnitTest",
+        "kind": 6,
+        "importPath": "unittest.test",
+        "description": "unittest.test",
+        "peekOfCode": "class UnitTest(unittest.TestCase):\n    def setUp(self):\n        self.batch_size = 64\n        self.image_channels = 1\n        self.image_size = 224\n        self.patch_size = 16\n        self.nheads = 8\n        self.embedding_dimension = 256\n        self.patch_embedding = PatchEmbedding(\n            image_channels=self.image_channels,",
+        "detail": "unittest.test",
+        "documentation": {}
+    }
+]

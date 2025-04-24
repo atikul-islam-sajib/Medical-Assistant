@@ -11,10 +11,13 @@ from langchain_core.output_parsers import StrOutputParser
 
 sys.path.append("./src/")
 
-from utils import device_init
-from ViT import ViTWithClassifier
-from prompt import classifier_prompt, QA_prompt
+try:
+    from ViT import ViTWithClassifier
+    from utils import device_init, config_files
+    from prompt import classifier_prompt, QA_prompt
 
+except ImportError:
+    print("Error: Unable to import required modules.".capitalize())
 
 class MedicalAssistant:
     def __init__(self, device: str = "cuda", image: str = None):
@@ -26,18 +29,18 @@ class MedicalAssistant:
         self.device = device_init(device=device)
 
         self.classifier = ViTWithClassifier(
-            image_channels=1,
-            image_size=224,
-            patch_size=16,
-            target_size=4,
-            encoder_layer=1,
-            nhead=8,
-            d_model=256,
-            dim_feedforward=256,
-            dropout=0.1,
-            activation="gelu",
-            layer_norm_eps=1e-05,
-            bias=False,
+            image_channels=config_files()["dataloader"]["image_channels"],
+            image_size=config_files()["dataloader"]["image_size"],
+            patch_size=config_files()["ViT"]["patch_size"],
+            target_size=config_files()["dataloader"]["target_size"],
+            encoder_layer=config_files()["ViT"]["encoder_layer"],
+            nhead=config_files()["ViT"]["nhead"],
+            d_model=config_files()["ViT"]["d_model"],
+            dim_feedforward=config_files()["ViT"]["dim_feedforward"],
+            dropout=config_files()["ViT"]["dropout"],
+            activation=config_files()["ViT"]["activation"],
+            layer_norm_eps=float(config_files()["ViT"]["layer_norm_eps"]),
+            bias=config_files()["ViT"]["bias"],
         ).to(self.device)
 
         self.memory = []
@@ -133,5 +136,6 @@ if uploaded_image is not None:
         f.write(uploaded_image.read())
         
     assistant = MedicalAssistant(device=device, image=image_path)
+    
     assistant.load_model()
     assistant.chat()
