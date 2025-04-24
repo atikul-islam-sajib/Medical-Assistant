@@ -3,6 +3,7 @@ import sys
 import torch
 import argparse
 import torch.nn as nn
+from torchview import draw_graph
 
 sys.path.append("./src/")
 
@@ -75,6 +76,7 @@ if __name__ == "__main__":
         help="The dimension of the output features",
     )
     parser.add_argument("--dropout", type=float, default=0.1, help="The dropout rate")
+    parser.add_argument("--display", type=bool, default=False, help="Display the graph")
 
     args = parser.parse_args()
 
@@ -97,3 +99,10 @@ if __name__ == "__main__":
     assert (
         network(images).size()
     ) == images.size(), "FFNN is not working properly".capitalize()
+
+    if args.display:
+        draw_graph(model=network, input_data=images).visual_graph.render(
+            filename="./artifacts/files/FFNN", format="png"
+        )
+        
+        print("FFNN saves in the folder ./artifacts/files/FFNN.png")
