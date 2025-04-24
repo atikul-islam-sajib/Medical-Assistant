@@ -4,6 +4,7 @@ import torch
 import warnings
 import argparse
 import torch.nn as nn
+from torchview import draw_graph
 
 sys.path.append("./src/")
 
@@ -100,6 +101,9 @@ if __name__ == "__main__":
         default=512,
         help="The dimension of the embedding".capitalize(),
     )
+    parser.add_argument(
+        "--display", type=bool, default=True, help="Display the graph".capitalize()
+    )
 
     args = parser.parse_args()
 
@@ -121,3 +125,11 @@ if __name__ == "__main__":
         (image_size // patch_size) ** 2,
         embedding_dimension,
     ), "Patch embedding is not working correctly".capitalize()
+
+    if args.display:
+        draw_graph(model=patch_embedding, input_data=image).visual_graph.render(
+            filename="./artifacts/files/patch_embedding", format="png"
+        )
+        print(
+            "Layer Normalization graph has been saved to ./artifacts/files/patch_embedding.png"
+        )
