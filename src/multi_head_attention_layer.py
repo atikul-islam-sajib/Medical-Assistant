@@ -5,6 +5,7 @@ import torch
 import argparse
 import warnings
 import torch.nn as nn
+from torchview import draw_graph
 
 sys.path.append("./src/")
 
@@ -119,6 +120,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--dimension", type=int, default=768, help="Dimension of the input tensor"
     )
+    parser.add_argument("--display", type=bool, default=False, help="Display the graph")
+
     args = parser.parse_args()
 
     nheads = args.nheads
@@ -127,8 +130,17 @@ if __name__ == "__main__":
     images = torch.randn((dimension // dimension, 196, dimension))
 
     multihead_attention = MultiHeadAttentionLayer(nheads=nheads, dimension=dimension)
+
     assert (
         multihead_attention(x=images)
     ).size() == images.size(), (
         "Multi head attention output must have the same size as input".capitalize()
     )
+
+    if args.display:
+        draw_graph(model=multihead_attention, input_data=images).visual_graph.render(
+            filename="./artifacts/files/multihead_attention", format="png"
+        )
+        print(
+            "Layer Normalization graph has been saved to ./artifacts/files/multihead_attention.png"
+        )
