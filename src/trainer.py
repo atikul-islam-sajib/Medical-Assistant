@@ -10,7 +10,7 @@ from sklearn.metrics import accuracy_score
 
 sys.path.append("./src/")
 
-from utils import device_init
+from utils import device_init, config_files
 from helper import helper, Criterion
 from ViT import ViTWithClassifier
 
@@ -220,18 +220,66 @@ class Trainer:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Training for the Medical Assistant")
-    parser.add_argument("--epochs", type=int, default=100, help="Number of epochs")
-    parser.add_argument("--lr", type=float, default=0.0001, help="Learning rate")
-    parser.add_argument("--beta1", type=float, default=0.9, help="Beta1 for Adam")
-    parser.add_argument("--beta2", type=float, default=0.999, help="Beta2 for Adam")
     parser.add_argument(
-        "--weight_decay", type=float, default=0.0001, help="Weight decay"
+        "--epochs",
+        type=int,
+        default=config_files()["Trainer"]["epochs"],
+        help="Number of epochs",
     )
-    parser.add_argument("--momentum", type=float, default=0.85, help="Momentum for SGD")
-    parser.add_argument("--adam", type=bool, default=True, help="Use Adam optimizer")
-    parser.add_argument("--SGD", type=bool, default=False, help="Use SGD optimizer")
-    parser.add_argument("--device", type=str, default="mps", help="Device to use")
-    parser.add_argument("--verbose", type=bool, default=True, help="Verbose mode")
+    parser.add_argument(
+        "--lr",
+        type=float,
+        default=config_files()["Trainer"]["lr"],
+        help="Learning rate",
+    )
+    parser.add_argument(
+        "--beta1",
+        type=float,
+        default=config_files()["Trainer"]["beta1"],
+        help="Beta1 for Adam",
+    )
+    parser.add_argument(
+        "--beta2",
+        type=float,
+        default=config_files()["Trainer"]["beta2"],
+        help="Beta2 for Adam",
+    )
+    parser.add_argument(
+        "--weight_decay",
+        type=float,
+        default=config_files()["Trainer"]["weight_decay"],
+        help="Weight decay",
+    )
+    parser.add_argument(
+        "--momentum",
+        type=float,
+        default=config_files()["Trainer"]["momentum"],
+        help="Momentum for SGD",
+    )
+    parser.add_argument(
+        "--adam",
+        type=bool,
+        default=config_files()["Trainer"]["adam"],
+        help="Use Adam optimizer",
+    )
+    parser.add_argument(
+        "--SGD",
+        type=bool,
+        default=config_files()["Trainer"]["SGD"],
+        help="Use SGD optimizer",
+    )
+    parser.add_argument(
+        "--device",
+        type=str,
+        default=config_files()["Trainer"]["device"],
+        help="Device to use",
+    )
+    parser.add_argument(
+        "--verbose",
+        type=bool,
+        default=config_files()["Trainer"]["verbose"],
+        help="Verbose mode",
+    )
 
     args = parser.parse_args()
 
