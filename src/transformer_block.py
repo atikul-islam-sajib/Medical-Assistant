@@ -3,6 +3,7 @@ import sys
 import torch
 import argparse
 import torch.nn as nn
+from torchview import draw_graph
 
 sys.path.append("./src/")
 
@@ -106,6 +107,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--bias", type=bool, default=False, help="Bias value for the linear layers"
     )
+    parser.add_argument("--display", type=bool, default=True, help="Display the graph")
 
     args = parser.parse_args()
 
@@ -139,3 +141,12 @@ if __name__ == "__main__":
     assert (
         transformer(images).size()
     ) == images.size(), "Transformer Encoder Block is not working properly".capitalize()
+    
+
+    if args.display:
+        draw_graph(model=transformer, input_data=images).visual_graph.render(
+            filename="./artifacts/files/transformer", format="png"
+        )
+        print(
+            "Layer Normalization graph has been saved to ./artifacts/files/transformer.png"
+        )
