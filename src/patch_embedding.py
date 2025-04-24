@@ -74,6 +74,13 @@ class PatchEmbedding(nn.Module):
             x = x.view(x.size(0), x.size(-1) * x.size(-2), x.size(1))
             x = self.encoding(x)
             return x
+        
+    @staticmethod
+    def total_parameters(model: PatchEmbedding):
+        if not isinstance(model, PatchEmbedding):
+            raise TypeError("Input must be a PatchEmbedding model")
+        else:
+            return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
 
 if __name__ == "__main__":
