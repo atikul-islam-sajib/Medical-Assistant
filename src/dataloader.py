@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 
 sys.path.append("./src/")
 
-from utils import dump_files
+from utils import dump_files, config_files
 
 
 class Loader:
@@ -174,17 +174,26 @@ if __name__ == "__main__":
     parser.add_argument(
         "--image_channels",
         type=int,
-        default=1,
+        default=config_files()["dataloader"]["image_channels"],
         help="Number of image channels".capitalize(),
     )
     parser.add_argument(
-        "--image_size", type=int, default=224, help="Image size".capitalize()
+        "--image_size",
+        type=int,
+        default=config_files()["dataloader"]["image_size"],
+        help="Image size".capitalize(),
     )
     parser.add_argument(
-        "--batch_size", type=int, default=4, help="Batch size".capitalize()
+        "--batch_size",
+        type=int,
+        default=config_files()["dataloader"]["batch_size"],
+        help="Batch size".capitalize(),
     )
     parser.add_argument(
-        "--split_size", type=float, default=0.30, help="Split size".capitalize()
+        "--split_size",
+        type=float,
+        default=config_files()["dataloader"]["split_size"],
+        help="Split size".capitalize(),
     )
 
     args = parser.parse_args()

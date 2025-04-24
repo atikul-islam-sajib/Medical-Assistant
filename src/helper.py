@@ -51,13 +51,13 @@ def load_dataloader():
 
 def helper(**kwargs):
     model = kwargs["model"]
-    lr: float = kwargs["lr"]
-    weight_decay: float = kwargs["weight_decay"]
+    lr: float = float(kwargs["lr"])
+    weight_decay: float = float(kwargs["weight_decay"])
     adam: bool = kwargs["adam"]
-    beta1: float = kwargs["beta1"]
-    beta2: float = kwargs["beta2"]
+    beta1: float = float(kwargs["beta1"])
+    beta2: float = float(kwargs["beta2"])
     SGD: bool = kwargs["SGD"]
-    momentum: float = kwargs["momentum"]
+    momentum: float = float(kwargs["momentum"])
 
     if model is None:
         classifier = ViTWithClassifier(
@@ -71,7 +71,7 @@ def helper(**kwargs):
             dim_feedforward=config_files()["ViT"]["dim_feedforward"],
             dropout=config_files()["ViT"]["dropout"],
             activation=config_files()["ViT"]["activation"],
-            layer_norm_eps=config_files()["ViT"]["layer_norm_eps"],
+            layer_norm_eps=float(config_files()["ViT"]["layer_norm_eps"]),
             bias=config_files()["ViT"]["bias"],
         )
     else:

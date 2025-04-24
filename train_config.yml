@@ -10,8 +10,8 @@ artifacts:
 
 dataloader:
   image_path: "./data/raw"
-  image_channels: 3
-  batch_size: 32
+  image_channels: 1
+  batch_size: 8
   image_size: 224
   split_size: 0.30
   target_size: 4
@@ -23,20 +23,24 @@ ViT:
   nhead: 8
   d_model: 256
   dim_feedforward: 256
-  dropout: 0.1
+  dropout: 0.3
   activation: "gelu"
   layer_norm_eps: 1e-05
   bias: False
 
 Trainer:
-  epochs: 100
-  lr: 0.001
+  epochs: 20
+  lr: 0.0001
   beta1: 0.9 
   beta2: 0.999
   weight_decay: 0.01
   momentum: 0.9
   adam: True
   SGD: False
-  device: "cuda"
+  device: "mps"
   verbose: True
+
+Tester:
+  dataset: "test"
+  device: "mps"
 

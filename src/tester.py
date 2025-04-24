@@ -2,6 +2,7 @@ import os
 import sys
 import torch
 import argparse
+import warnings
 import torch.nn as nn
 from sklearn.metrics import (
     accuracy_score,
@@ -16,6 +17,8 @@ sys.path.append("./src/")
 
 from utils import device_init, load_files, config_files
 from ViT import ViTWithClassifier
+
+warnings.filterwarnings("ignore")
 
 
 class Tester:
@@ -54,7 +57,7 @@ class Tester:
             dim_feedforward=config_files()["ViT"]["dim_feedforward"],
             dropout=config_files()["ViT"]["dropout"],
             activation=config_files()["ViT"]["activation"],
-            layer_norm_eps=config_files()["ViT"]["layer_norm_eps"],
+            layer_norm_eps=float(config_files()["ViT"]["layer_norm_eps"]),
             bias=config_files()["ViT"]["bias"],
         ).to(self.device)
 
@@ -90,9 +93,9 @@ class Tester:
         print("Accuracy: ", accuracy_score(y_true, y_pred))
         print("Precision: ", precision_score(y_true, y_pred, average="weighted"))
         print("Recall: ", recall_score(y_true, y_pred, average="weighted"))
-        print("F1 Score: ", f1_score(y_true, y_pred, average="weighted"))
+        print("F1 Score: ", f1_score(y_true, y_pred, average="weighted"), "\n")
 
-        print("Confusion Matrix: \n", confusion_matrix(y_true, y_pred))
+        print("Confusion Matrix: \n", confusion_matrix(y_true, y_pred), "\n")
         print("Classification Report: \n", classification_report(y_true, y_pred))
 
 
@@ -101,10 +104,16 @@ if __name__ == "__main__":
         description="Tester code for the evaluation".title()
     )
     parser.add_argument(
-        "--dataset", type=str, default="test", help="Dataset to be used for testing"
+        "--dataset",
+        type=str,
+        default=config_files()["Tester"]["dataset"],
+        help="Dataset to be used for testing",
     )
     parser.add_argument(
-        "--device", type=str, default="cuda", help="Device to be used for testing"
+        "--device",
+        type=str,
+        default=config_files()["Tester"]["device"],
+        help="Device to be used for testing",
     )
 
     args = parser.parse_args()
