@@ -3,6 +3,7 @@ import sys
 import torch
 import argparse
 import torch.nn as nn
+from torchview import draw_graph
 
 sys.path.append("./src/")
 
@@ -50,22 +51,46 @@ class LayerNormalization(nn.Module):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Layer Normalization for the Medical Assistant".title())
-    parser.add_argument("--normalized_shape", type=int, default=768, help="The shape of the input tensor".capitalize())
-    parser.add_argument("--eps", type=float, default=1e-05, help="The epsilon value for the normalization".capitalize())
-    
+    parser = argparse.ArgumentParser(
+        description="Layer Normalization for the Medical Assistant".title()
+    )
+    parser.add_argument(
+        "--normalized_shape",
+        type=int,
+        default=768,
+        help="The shape of the input tensor".capitalize(),
+    )
+    parser.add_argument(
+        "--eps",
+        type=float,
+        default=1e-05,
+        help="The epsilon value for the normalization".capitalize(),
+    )
+    parser.add_argument(
+        "--display",
+        type=bool,
+        default=False,
+        help="Display the output of the layer normalization".capitalize(),
+    )
+
     args = parser.parse_args()
-    
+
     image_channels = 3
     image_size = 224
     patch_size = 16
-    
+
     total_patches = (image_size // patch_size) ** 2
-    dimension = (image_channels * patch_size * patch_size)
-    
+    dimension = image_channels * patch_size * patch_size
+
     norm = LayerNormalization(normalized_shape=dimension)
-    images = torch.randn((image_channels//image_channels, total_patches, dimension))
+    images = torch.randn((image_channels // image_channels, total_patches, dimension))
 
     assert (
         norm(images).size()
     ) == images.size(), "Layer Normalization is not working properly".capitalize()
+
+    if args.display:
+        draw_graph(model=norm, input_data=images).visual_graph.render(
+            filename="./artifacts/files/layer_normalization", format="png"
+        )
+        print("Layer Normalization graph has been saved to ./artifacts/files/layer_normalization.png")
