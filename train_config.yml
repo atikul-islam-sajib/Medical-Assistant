@@ -15,6 +15,8 @@ dataloader:
   image_size: 224
   split_size: 0.30
   target_size: 4
+  class_names: ["glioma", "meningioma", "pituitary", "notumor"]
+
 
 ViT:
   patch_size: 16

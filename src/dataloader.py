@@ -88,7 +88,7 @@ class Loader:
         train_path = "./data/processed/Training"
         valid_path = "./data/processed/Testing"
 
-        class_names = ["glioma", "meningioma", "pituitary", "notumor"]
+        class_names = list(config_files()["dataloader"]["class_names"])
 
         for path in [train_path, valid_path]:
             for label in class_names:

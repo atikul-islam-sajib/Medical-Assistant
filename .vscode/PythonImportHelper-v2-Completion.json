@@ -643,7 +643,7 @@
         "kind": 6,
         "importPath": "src.ViT",
         "description": "src.ViT",
-        "peekOfCode": "class Classifier(nn.Module):\n    def __init__(\n        self, dimension: int = 768, dropout: float = 0.3, activation: str = \"leaky\"\n    ):\n        super(Classifier, self).__init__()\n        self.dimension = dimension\n        self.dropout = dropout\n        self.activation_func = activation\n        if self.activation_func == \"relu\":\n            self.activation = nn.ReLU(inplace=True)",
+        "peekOfCode": "class Classifier(nn.Module):\n    def __init__(\n        self,\n        dimension: int = 768,\n        dropout: float = 0.3,\n        activation: str = \"leaky\",\n        target_size: int = 4,\n    ):\n        super(Classifier, self).__init__()\n        self.dimension = dimension",
         "detail": "src.ViT",
         "documentation": {}
     },

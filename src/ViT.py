@@ -17,13 +17,18 @@ except ImportError:
 
 class Classifier(nn.Module):
     def __init__(
-        self, dimension: int = 768, dropout: float = 0.3, activation: str = "leaky"
+        self,
+        dimension: int = 768,
+        dropout: float = 0.3,
+        activation: str = "leaky",
+        target_size: int = 4,
     ):
         super(Classifier, self).__init__()
 
         self.dimension = dimension
         self.dropout = dropout
         self.activation_func = activation
+        self.target_size = target_size
 
         if self.activation_func == "relu":
             self.activation = nn.ReLU(inplace=True)
@@ -55,7 +60,9 @@ class Classifier(nn.Module):
             self.out_features = self.out_features // 4
 
         self.layers += [
-            nn.Sequential(nn.Linear(in_features=self.in_features, out_features=4))
+            nn.Sequential(
+                nn.Linear(in_features=self.in_features, out_features=self.target_size)
+            )
         ]
 
         self.classifier = nn.Sequential(*self.layers)
@@ -177,7 +184,7 @@ class ViTWithClassifier(nn.Module):
             x = self.classifier(x)
 
             return x
-        
+
     @staticmethod
     def total_parameters(model: ViTWithClassifier):
         if not isinstance(model, ViTWithClassifier):
@@ -225,7 +232,7 @@ if __name__ == "__main__":
     parser.add_argument("--target_size", type=int, default=4, help="Target size")
     parser.add_argument("--batch_size", type=int, default=16, help="Batch size")
     parser.add_argument("--display", type=bool, default=True, help="Display the graph")
-    
+
     args = parser.parse_args()
 
     image_channels = args.image_channels
@@ -264,12 +271,9 @@ if __name__ == "__main__":
         args.batch_size,
         target_size,
     ), "ViTWithClassifier is not working correctly".capitalize()
-    
 
     if args.display:
         draw_graph(model=vit, input_data=images).visual_graph.render(
             filename="./artifacts/files/ViT", format="png"
         )
-        print(
-            "Layer Normalization graph has been saved to ./artifacts/files/ViT.png"
-        )
+        print("Layer Normalization graph has been saved to ./artifacts/files/ViT.png")
