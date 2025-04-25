@@ -30,13 +30,13 @@ This is a **fully customizable, transformer-based** medical diagnostic system de
 
 The **Medical Assistant** is composed of two primary modules:
 
-### 🧠 1. ViT Classifier
+### 1. ViT Classifier
 A **Vision Transformer (ViT)** with a custom classifier head:
 - Patch-based encoding (16x16)
 - Transformer encoder layers
 - Fully connected classifier
 
-### 💬 2. Chatbot Interface
+### 2. Chatbot Interface
 An **LLM-powered medical assistant**:
 - Uses predictions to trigger AI responses
 - Supports dynamic follow-up Q&A
@@ -52,30 +52,19 @@ An **LLM-powered medical assistant**:
 Tumor Class + Score   ─▶  LangChain + LLM Chatbot
                          (Interactive Medical Q&A)
 ```
+---
+
+### **Installation Steps**
+
+| **Step** | **Command / Description** |
+|----------|----------------------------|
+|  **Clone the Repository** | `git clone https://github.com/your-username/medical-assistant.git`<br>`cd medical-assistant` |
+|  **Install Dependencies** | `pip install -r requirements.txt` |
+|  **Setup OpenAI API Key** | Create a `.env` file in the root directory with the following content:<br>`OPENAI_API_KEY=your-openai-key` |
 
 ---
 
-## **📌 Installation**
-### **1️⃣ Clone the Repository**
-```bash
-git clone https://github.com/your-username/medical-assistant.git
-cd medical-assistant
-```
-
-### **2️⃣ Install Dependencies**
-```bash
-pip install -r requirements.txt
-```
-
-### **3️⃣ Setup OpenAI API**
-Create a `.env` file:
-```env
-OPENAI_API_KEY=your-openai-key
-```
-
----
-
-### 📌 **Configuration Parameters**
+### **Configuration Parameters**
 
 | **Parameter**        | **Description**                               |
 |----------------------|-----------------------------------------------|
