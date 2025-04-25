@@ -49,7 +49,7 @@ A **Vision Transformer (ViT)** with a custom classifier head:
 An **LLM-powered medical assistant**:
 - Uses predictions to trigger AI responses
 - Supports dynamic follow-up Q&A
-- Powered by LangChain & OpenAI's `gpt-3.5-turbo`
+- Powered by LangChain & OpenAI's `gpt-4o`
 
 ```
   Image
