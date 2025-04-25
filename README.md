@@ -7,6 +7,15 @@ This is a **fully customizable, transformer-based** medical diagnostic system de
 
 ---
 
+## 🖼️ Demo Screenshots
+
+<div align="center">
+  <img src="./logs/initial.png" alt="Initial Diagnosis" width="48%" style="margin-right: 2%;" />
+  <img src="./logs/initial2.png" alt="Interactive Chat Q&A" width="48%" />
+</div>
+
+---
+
 ## **📌 Key Features**
 ✅ ViT-based image classifier for brain MRI scans  
 ✅ Multi-class classification: **Glioma, Meningioma, Pituitary, No Tumor**  
