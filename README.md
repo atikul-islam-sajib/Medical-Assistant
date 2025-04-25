@@ -5,9 +5,18 @@ This is a **fully customizable, transformer-based** medical diagnostic system de
 > **"AI-Powered Brain Tumor Detection + Chatbot using Vision Transformers (ViT) & LangChain"**  
 > Built by deep learning enthusiasts, this unofficial project explores the combination of **Vision Transformers (ViT)** and **LLMs (OpenAI)** for medical assistance.
 
+## **📌 Workflow**
+
+| **Step** | **Process**        | **Description** |
+|----------|--------------------|-----------------|
+| 1       | Preprocess Image   | Resize, grayscale, normalize |
+| 2️       | Classify Image     | Predict tumor class using ViT |
+| 3️       | Display Diagnosis  | Output tumor type & confidence |
+| 4️       | Chat with AI       | Ask related medical questions |
+
 ---
 
-## 🖼️ Demo Screenshots - Projects
+## Demo Screenshots - Projects
 
 <div align="center">
   <img src="./logs/initial.png" alt="Initial Diagnosis" width="48%" style="margin-right: 2%;" />
@@ -17,12 +26,12 @@ This is a **fully customizable, transformer-based** medical diagnostic system de
 ---
 
 ## **📌 Key Features**
-✅ ViT-based image classifier for brain MRI scans  
-✅ Multi-class classification: **Glioma, Meningioma, Pituitary, No Tumor**  
-✅ Integrated **LangChain + OpenAI ChatGPT** for contextual medical Q&A  
-✅ Support for **custom model training** with multiple optimizers & regularization  
-✅ Automatic **image preprocessing** and device-aware pipeline  
-✅ Saves **model checkpoints** and tracks **training performance**  
+ViT-based image classifier for brain MRI scans  
+Multi-class classification: **Glioma, Meningioma, Pituitary, No Tumor**  
+Integrated **LangChain + OpenAI ChatGPT** for contextual medical Q&A  
+Support for **custom model training** with multiple optimizers & regularization  
+Automatic **image preprocessing** and device-aware pipeline  
+Saves **model checkpoints** and tracks **training performance**  
 
 ---
 
@@ -91,12 +100,6 @@ Tumor Class + Score   ─▶  LangChain + LLM Chatbot
 
 ---
 
-## **📌 Running the Assistant**
-
-Absolutely! Here's a neatly formatted table for the **Inference + Chatbot** and **Model Training** commands, just like your style:
-
----
-
 ### 🧪 **Inference + Chatbot**
 
 | **Command** | **Description** |
@@ -104,28 +107,6 @@ Absolutely! Here's a neatly formatted table for the **Inference + Chatbot** and 
 | `python train.py --epochs 50 --lr 0.0003 --adam True --device cuda` | Train the model for 50 epochs using Adam optimizer on GPU |
 | `python medical_assistant.py --image ./sample.jpg --device cuda` | Run inference on an MRI image and start the chatbot |
 |  `exit` | Type this during chat to stop the chatbot |
-
----
-
-## **📌 Output Structure**
-
-| **Process**         | **Path**                                             |
-|---------------------|------------------------------------------------------|
-| Best Model          | `./artifacts/checkpoints/best_model/best_model.pth` |
-| Training Checkpoints| `./artifacts/checkpoints/train_models/`             |
-| Input Images        | Supplied via `--image` path or folder               |
-| Dialogue Memory     | Stored internally during a session                  |
-
----
-
-## **📌 Workflow**
-
-| **Step** | **Process**        | **Description** |
-|----------|--------------------|-----------------|
-| 1️⃣       | Preprocess Image   | Resize, grayscale, normalize |
-| 2️⃣       | Classify Image     | Predict tumor class using ViT |
-| 3️⃣       | Display Diagnosis  | Output tumor type & confidence |
-| 4️⃣       | Chat with AI       | Ask related medical questions |
 
 ---
 
