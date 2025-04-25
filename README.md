@@ -1,4 +1,4 @@
-# **🧠 Medical Assistant - AI-Powered Brain Tumor Classifier & Chatbot**
+# **Medical Assistant - AI-Powered Brain Tumor Classifier & Chatbot**
 
 This is a **fully customizable, transformer-based** medical diagnostic system designed to classify brain tumors from MRI scans and assist with interactive medical Q&A using **LLMs**.
 
@@ -7,11 +7,11 @@ This is a **fully customizable, transformer-based** medical diagnostic system de
 
 ---
 
-## 🖼️ Demo Screenshots
+## 🖼️ Demo Screenshots - Projects
 
 <div align="center">
-  <img src="./logs/initial.png" alt="Initial Diagnosis" width="48%" style="margin-right: 2%;" />
-  <img src="./logs/initial2.png" alt="Interactive Chat Q&A" width="48%" />
+  <img src="./logs/initial.png" alt="Initial Diagnosis" width="50%" style="margin-right: 2%;" />
+  <img src="./logs/initial2.png" alt="Interactive Chat Q&A" width="50%" />
 </div>
 
 ---
@@ -104,26 +104,24 @@ OPENAI_API_KEY=your-openai-key
 
 ## **📌 Running the Assistant**
 
-### 🧪 Inference + Chatbot
-
-```bash
-python medical_assistant.py --image ./sample.jpg --device cuda
-```
-
-💬 Type `exit` to stop the chatbot.
+Absolutely! Here's a neatly formatted table for the **Inference + Chatbot** and **Model Training** commands, just like your style:
 
 ---
 
-## **📌 Model Training**
+### 🧪 **Inference + Chatbot**
 
-```bash
-python train.py --epochs 50 --lr 0.0003 --adam True --device cuda
-```
+| **Command** | **Description** |
+|-------------|-----------------|
+| `python medical_assistant.py --image ./sample.jpg --device cuda` | Run inference on an MRI image and start the chatbot |
+| 💬 `exit` | Type this during chat to stop the chatbot |
 
-Supports:
-- Adam / SGD optimizers
-- L1 & ElasticNet regularization
-- Checkpoint saving & accuracy metrics
+---
+
+### 📌 **Model Training**
+
+| **Command** | **Description** |
+|-------------|-----------------|
+| `python train.py --epochs 50 --lr 0.0003 --adam True --device cuda` | Train the model for 50 epochs using Adam optimizer on GPU |
 
 ---
 
@@ -146,17 +144,6 @@ Supports:
 | 2️⃣       | Classify Image     | Predict tumor class using ViT |
 | 3️⃣       | Display Diagnosis  | Output tumor type & confidence |
 | 4️⃣       | Chat with AI       | Ask related medical questions |
-
----
-
-## **📌 Model Classes: Brain Tumor**
-
-| Label Index | Prediction       |
-|-------------|------------------|
-| `0`         | Brain: Glioma     |
-| `1`         | Brain: Meningioma |
-| `2`         | Brain: No Tumor   |
-| `3`         | Brain: Pituitary  |
 
 ---
 
