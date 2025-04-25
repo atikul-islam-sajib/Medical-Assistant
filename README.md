@@ -10,8 +10,8 @@ This is a **fully customizable, transformer-based** medical diagnostic system de
 ## 🖼️ Demo Screenshots - Projects
 
 <div align="center">
-  <img src="./logs/initial.png" alt="Initial Diagnosis" width="50%" style="margin-right: 2%;" />
-  <img src="./logs/initial2.png" alt="Interactive Chat Q&A" width="50%" />
+  <img src="./logs/initial.png" alt="Initial Diagnosis" width="48%" style="margin-right: 2%;" />
+  <img src="./logs/initial2.png" alt="Interactive Chat Q&A" width="48%" />
 </div>
 
 ---
@@ -112,16 +112,9 @@ Absolutely! Here's a neatly formatted table for the **Inference + Chatbot** and 
 
 | **Command** | **Description** |
 |-------------|-----------------|
-| `python medical_assistant.py --image ./sample.jpg --device cuda` | Run inference on an MRI image and start the chatbot |
-| 💬 `exit` | Type this during chat to stop the chatbot |
-
----
-
-### 📌 **Model Training**
-
-| **Command** | **Description** |
-|-------------|-----------------|
 | `python train.py --epochs 50 --lr 0.0003 --adam True --device cuda` | Train the model for 50 epochs using Adam optimizer on GPU |
+| `python medical_assistant.py --image ./sample.jpg --device cuda` | Run inference on an MRI image and start the chatbot |
+|  `exit` | Type this during chat to stop the chatbot |
 
 ---
 
